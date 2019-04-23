@@ -14,9 +14,9 @@ if (isset($metodo["array"])){
 
    for ($i=0; $i < count($arrayDados); $i++){
 
-        $end = $arrayDados[$i][0];
-        $lat = $arrayDados[$i][1];
-        $long = $arrayDados[$i][2];
+        $end = $arrayDados[$i]['Endereco'];
+        $lat = $arrayDados[$i]['Latitude'];
+        $long = $arrayDados[$i]['Longitude'];
        
        $sql .= "('$end','$lat','$long',$id)";
 

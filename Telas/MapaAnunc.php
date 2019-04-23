@@ -30,7 +30,7 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
       <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:700, 600,500,400,300' rel='stylesheet' type='text/css'>
       <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"> 
 </head>
-<body onload="initMap()">
+<body>
 
     <?php include_once '../Util/MenuAnunc.php'; ?>
 
@@ -117,23 +117,12 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNShMFKHm554D-kvg7IfJXCJtxGX_ANHo&callback=initMap">
 </script>
 <!-- ------------------------ -->
-<script type="text/javascript">
-    $(document).ready(function(){
-
-      var li = $('ul #li_caminho:last-child');
-      $(li[0].firstChild).css('border-bottom','1px solid silver');
- 
-    });
-</script>
 <script>
 
     var lat_long = [];
     var mapa;
     var id = '<?php echo $_SESSION['SESSION_ANUNC_ID']; ?>';
-    var array_filtrado;
-    var array_excluir;
-
-
+    var object;
 
       //EVENTO PESQUISAR NO MAPA
        $('.btnPesquisa').click(function(){
@@ -188,11 +177,13 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
 
           }else{
 
+           object = JSON.parse(localStorage.getItem('Array'));
+
            $.ajax({
             url:'../PontosPublicidade/RegistraPonto.php',
             type: 'POST',
             datatype: 'html',
-            data: {array : lat_long, IdAnunc : id},
+            data: {array : object, IdAnunc : id},
 
             success: function(response){
 
@@ -203,6 +194,7 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
 
                 window.setTimeout(function(){
                     $('#ModalAlert').modal('hide');
+                    localStorage.removeItem('Array');
                      window.location.reload();
                  },2100);
               }else{
@@ -225,40 +217,45 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
       });
 
 
-      $('.btnVer').click(function(){
-        console.log(lat_long);
-      });
 
-
-
+   
     function initMap(){
 
-        var geocoder = new google.maps.Geocoder;
+        var marker = new google.maps.Marker;
         var infowindow = new google.maps.InfoWindow;
-
-
+        var geocoder = new google.maps.Geocoder;
+    
         var map = new google.maps.Map(document.getElementById('map'),{
-          zoom: 15,
+          zoom: 14,
           center: {lat: -6.405189740865475, lng: -38.85924263008599}
           //mapTypeId: google.maps.MapTypeId.SATELLITE
         });
 
         mapa = map;
 
-    
+        MarcarPontosAutomatico(map);
 
+
+      //MARCA PONTOS NO MAPA ----------------------------------------- / 
       map.addListener('click', function(e){
           //placeMarkerAndPanTo(e.latLng, map);
           //marcarPontoComEndereco(e.latLng,map);
-          if($('.QtdPontos').html() != 0 || !$('.QtdPontos').find('i')){
-             geocodeLatLng(e.latLng.lat(),e.latLng.lng(),map);
-          }else{
-            alert('IMPOSSIVEL MARCAR OUTRO PONTO!!');
-          }
+             if($('.QtdPontos').children().length != 0){
+                alert('VOCE JA POSSUI PONTOS MARCADOS!!');
+            }else{
+
+               if($('.QtdPontos').html() != 0){
+                   geocodeLatLng(e.latLng.lat(),e.latLng.lng(),map);
+                }else{
+                   alert('IMPOSSIVEL MARCAR OUTRO PONTO!!');
+                }
+               
+            }
           
       });
 
-      //OBTER ENDEREÇO A PARTIR DA LATITUDE E LONGITUDE DE UM PONTO
+
+      //MARCAR PONTO NO MAPA COM ENDERECO ATRAVES DO CLIQUE
       function geocodeLatLng(latitude,longitude,map){
 
         var geocoder = new google.maps.Geocoder;
@@ -270,16 +267,8 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
         //EXCLUIR PONTO E TIRAR DO ARRAY
         marker.addListener("dblclick", function(){
              marker.setMap(null);
-          
-             array_excluir = [endereco,marker.getPosition().lat(),marker.getPosition().lng()];
-              
-            lat_long.forEach(function(item,indice,array){
-              if(item[0] == array_excluir[0]){
-                var novo = lat_long.splice(indice,1);
-              }
-            });
 
-            console.log(lat_long);
+             ApagarPontosArray(marker.getPosition().lat(),marker.getPosition().lng());
 
              var num = $('.QtdPontos').html();
              num++;
@@ -301,10 +290,8 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
                   infowindow.open(map,marker);
 
                   endereco = results[0].formatted_address;
-                 
-                  lat_long.push([results[0].formatted_address,latitude,longitude]);
 
-                  console.log(lat_long);  
+                  setarPontosArray(endereco,latitude,longitude);
 
             }else{
                alert('NENHUM RESULTADO ENCONTRADO!');
@@ -317,64 +304,101 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
         });
       }
 
-    
 
-      /*Pegar dados e setar nos campos de texto 
-      google.maps.event.addListener(map, 'click', function(event) {
+
+      function setarPontosArray(End,Lat,Long){
+
+          if(localStorage.getItem('Array') != null){
+
+            object = JSON.parse(localStorage.getItem('Array'));
+
+            var valores =  {'Endereco':End,'Latitude':Lat,'Longitude':Long };
+
+              object.push(valores);
+
+              localStorage.setItem('Array',JSON.stringify(object));
+
+              console.log(object);
           
-          document.getElementById('latMap').value = event.latLng.lat();
-          document.getElementById('lngMap').value = event.latLng.lng();
+          }else{
 
-           var evento = {
-                        'Endereco': 'Icó-CE',
-                         'Latitude': event.latLng.lat(),
-                         'Longitude': event.latLng.lng()
-                        };
-             
-           lat_long.push(evento);
+            var valores =  {'Endereco':End,'Latitude':Lat,'Longitude':Long };
 
-           console.log(lat_long);          
+            lat_long.push(valores);
 
-      });*/
-
-      var b = document.getElementById('btn');
-      
-      $('.btnListar').click(function(){
-
-         for (var i = 0; i < lat_long.length; i++) {
-            var ponto = new google.maps.Marker({
-            position: new google.maps.LatLng(lat_long[i]['Latitude'],lat_long[i]['Longitude']),
-            map: map
-            });
+            localStorage.setItem('Array',JSON.stringify(lat_long));
+            console.log('colocou primeiro valor');
           }
 
-      });
-
-
-
-            function mapDivClicked(event){
-                var target = document.getElementById('map'),
-                    posx = event.pageX - target.offsetLeft,
-                    posy = event.pageY - target.offsetTop,
-                    bounds = map.getBounds(),
-                    neLatlng = bounds.getNorthEast(),
-                    swLatlng = bounds.getSouthWest(),
-                    startLat = neLatlng.latitude(),
-                    endLng = neLatlng.longitude(),
-                    endLat = swLatlng.latitude(),
-                    startLng = swLatlng.longitude();
-
-                document.getElementById('posX').value = posx;
-                document.getElementById('posY').value = posy;
-                document.getElementById('latitude').value = startLat + ((posy/350) * (endLat - startLat));
-                document.getElementById('longitude').value = startLng + ((posx/500) * (endLng - startLng));
-            };
-    
       }
+
+
+      function ApagarPontosArray(Lat,Long){
+
+            object = JSON.parse(localStorage.getItem('Array'));
+
+            object.filter(function(i,index){
+
+            if(i.Latitude == Lat && i.Longitude == Long){
+              console.log('é o indice '+index);
+        
+              object.splice(index,1);
+
+              localStorage.setItem('Array',JSON.stringify(object));
+
+              console.log(object);
+            }else{
+              console.log('nao tem');
+            }
+
+        });
+     }
+
+
+
+        function MarcarPontosAutomatico(map){
+
+        var geocoder = new google.maps.Geocoder;
+        object = JSON.parse(localStorage.getItem('Array'));
+
+          if(object != null){
+
+               object.forEach(function(i){
+               
+                  var local = {lat: i.Latitude,lng: i.Longitude};
+
+                  geocoder.geocode({'location': local}, function(results,status){
+                      if (status === google.maps.GeocoderStatus.OK) {
+                        if (results[0]) {
+
+                              var marcador = new google.maps.Marker({
+                                position: local,
+                                map: map
+                              });
+
+                               var infowindow = new google.maps.InfoWindow({
+                                 content: results[0].formatted_address
+                               });
+
+                               infowindow.open(map,marcador);                      
+                        }
+
+                      }
+
+                    });
+
+               });
+                    
+          }
+        }
+
+
+    
+    }
      /*---- Fim da função ----*/
 
 
-      //CRIAR CIRCULO DE UM RAIO DENTRO DO MAPA
+      /*CRIAR CIRCULO DE UM RAIO DENTRO DO MAPA
         function setMarkers(map,locations){
 
             var marker, i;
@@ -419,35 +443,48 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
 
             }
         }
-  
+        */
 
-    
+ 
+      function placeMarkerAndPanTo(latLng, map){} 
 
 
-      function placeMarkerAndPanTo(latLng, map){
-        var marker = new google.maps.Marker({
-          position: latLng,
-          map: map
-        });
-        map.panTo(latLng);
+     /* function mapDivClicked(event){
+                var target = document.getElementById('map'),
+                    posx = event.pageX - target.offsetLeft,
+                    posy = event.pageY - target.offsetTop,
+                    bounds = map.getBounds(),
+                    neLatlng = bounds.getNorthEast(),
+                    swLatlng = bounds.getSouthWest(),
+                    startLat = neLatlng.latitude(),
+                    endLng = neLatlng.longitude(),
+                    endLat = swLatlng.latitude(),
+                    startLng = swLatlng.longitude();
 
-        /*JANELA DE INFORMAÇÕES*/
-        var infowindow = new google.maps.InfoWindow({
-          content: 'Lat:'+latLng.lat()+'// Long:'+latLng.lng()
-        });
+                document.getElementById('posX').value = posx;
+                document.getElementById('posY').value = posy;
+                document.getElementById('latitude').value = startLat + ((posy/350) * (endLat - startLat));
+                document.getElementById('longitude').value = startLng + ((posx/500) * (endLng - startLng));
+      };*/
 
-        //EXIBIR CAIXA DE INFORMAÇÕES AO PASSAR O MOUSE 
-        marker.addListener("mouseover", function() {
-            infowindow.open(map,marker);
-        });
-        
-        /*APAGAR PONTOS MARCADOS*/
-        marker.addListener("dblclick", function() {
-             marker.setMap(null);
-        });
-        
-      }
 
+      /*Pegar dados e setar nos campos de texto 
+      google.maps.event.addListener(map, 'click', function(event) {
+          
+          document.getElementById('latMap').value = event.latLng.lat();
+          document.getElementById('lngMap').value = event.latLng.lng();
+
+           var evento = {
+                        'Endereco': 'Icó-CE',
+                         'Latitude': event.latLng.lat(),
+                         'Longitude': event.latLng.lng()
+                        };
+             
+           lat_long.push(evento);
+
+           console.log(lat_long);          
+
+      });*/
 
     </script>
 </html>
