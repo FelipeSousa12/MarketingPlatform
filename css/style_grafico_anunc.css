@@ -1,0 +1,106 @@
+/*--------- CORPO ---------*/
+.conteudo{
+	position: relative;
+	height: 84%;
+	float: right;
+	width: 81%;
+	transition: .7s;
+}
+
+.conteudo-container{
+	right: 0;
+	position: fixed;
+	height: 87%;
+  width: 84%;
+	overflow: auto;
+  background: rgba(0,0,0,0.1);
+}
+
+.group-conteudo{
+  padding: 0;
+  display: block;
+  text-align: center;
+  background: white;
+  width: 94%;
+  height: 94%;
+  transform: translate(60px,20px);
+  position: relative;
+}
+
+.conteudo-container::-webkit-scrollbar { width:5px; background: #00beaa;}
+.conteudo-container::-webkit-scrollbar-track { background: #4e4e4e; }
+.conteudo-container::-webkit-scrollbar-thumb { border-radius:17px; background: #00beaa;}
+.conteudo-container::-webkit-scrollbar-corner { visibility: hidden;}
+.conteudo-container::-webkit-resizer { visibility: hidden; }
+
+.group-graficos-1{
+ padding: 18px;
+ margin: 15px;
+ float: left;
+ width: 460px;
+ height: 300px;
+}
+
+.group-graficos-2{
+ padding: 18px;
+ margin: 15px;
+ float: right;
+ width: 460px;
+ height: 300px;
+}
+
+/*-------- CAMINHO PAGINA --------- */
+ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul #li_caminho{
+   display: inline-block;
+   padding: -10px;
+   margin: -10px;
+   margin-left: 25px;
+   margin-top: 8px;
+}
+
+ul #a_caminho{ /*TAG a (ANCORA)*/
+	font-size: 11px;
+	border: none;
+	margin: 0;
+	padding:0;
+	color: black;
+	text-decoration: none;
+	transition: all .2s;
+	text-transform: uppercase;
+}
+
+ul #a_caminho i{
+	font-size: 14px;
+}
+
+ul #a_caminho:hover{
+	color: #D56D05;
+}
+
+.caminho{
+	position: relative;
+    height: 40px;
+    border: none;
+    z-index: 5;
+    box-shadow: 3px 3px 3px rgba(0,0,0,.2);
+}
+
+/*--------- FIM CAMINHO ---------*/
+
+/*--------- FIM ---------*/
+
+/*****************--------RESPONSIVIDADE--------******************/
+/*CODIGO QUANDO CHEGAR NA PROPORÇÃO DE PIXEL INFORMADA*/
+@media (min-width: 1367px) and (max-width: 1920px){
+   .conteudo{
+    width: 90%;
+   }  
+}
+/*****************--------FIM RESPONSIVIDADE--------******************/
+

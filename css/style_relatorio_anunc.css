@@ -1,0 +1,123 @@
+/*--------- CORPO ---------*/
+.conteudo{
+	position: relative;
+	height: 84%;
+	float: right;
+	width: 81%;
+	transition: .7s;
+}
+
+.conteudo-container{
+	right: 0;
+	position: fixed;
+	height: 87%;
+	width: 84%;
+	overflow: auto;
+  background: rgba(0,0,0,0.1);
+}
+
+.group-conteudo{
+  padding: 0;
+  display: block;
+  text-align: center;
+  background: white;
+  width: 94%;
+  height: 94%; 
+  transform: translate(60px,20px);
+  position: relative;
+}
+
+/*-------- PDF -----------*/
+.escolha-relatorio{
+  top: 30%;
+  transform: translate(3px,100px);
+}
+
+.escolha-relatorio select{
+   padding: 10px;
+   border-radius: 8px;
+   background-color: white;
+   border: 1px solid #D56D05;
+   outline: none;
+   color: #D56D05;
+   font-weight: 200;
+   cursor: pointer;
+   width: 20%;
+}
+
+.escolha-relatorio p label{
+  margin-right: 10px;
+}
+
+.group-conteudo i{
+  font-size: 210px;
+  opacity: .2;
+  color: rgba(0,0,0,0.2);
+  position: absolute;
+  top: 260px;
+  left: 460px;
+}
+
+/*-------- FIM PDF -----------*/
+.conteudo-container::-webkit-scrollbar { width:5px; background: #00beaa;}
+.conteudo-container::-webkit-scrollbar-track { background: #4e4e4e; }
+.conteudo-container::-webkit-scrollbar-thumb { border-radius:17px; background: #D56D05;}
+.conteudo-container::-webkit-scrollbar-corner { visibility: hidden;}
+.conteudo-container::-webkit-resizer { visibility: hidden; }
+
+
+/*-------- CAMINHO PAGINA --------- */
+ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul #li_caminho{
+   display: inline-block;
+   padding: -10px;
+   margin: -10px;
+   margin-left: 25px;
+   margin-top: 8px;
+}
+
+ul #a_caminho{ /*TAG a (ANCORA)*/
+	font-size: 11px;
+	border: none;
+	margin: 0;
+	padding:0;
+	color: black;
+	text-decoration: none;
+	transition: all .2s;
+	text-transform: uppercase;
+}
+
+ul #a_caminho i{
+	font-size: 14px;
+}
+
+ul #a_caminho:hover{
+	color: #D56D05;
+}
+
+.caminho{
+	position: relative;
+    height: 40px;
+    border: none;
+    z-index: 5;
+    box-shadow: 3px 3px 3px rgba(0,0,0,.2);
+}
+
+/*--------- FIM CAMINHO ---------*/
+
+/*--------- FIM ---------*/
+
+/*****************--------RESPONSIVIDADE--------******************/
+/*CODIGO QUANDO CHEGAR NA PROPORÇÃO DE PIXEL INFORMADA*/
+@media (min-width: 1367px) and (max-width: 1920px){
+   .conteudo{
+    width: 90%;
+   }  
+}
+/*****************--------FIM RESPONSIVIDADE--------******************/
+

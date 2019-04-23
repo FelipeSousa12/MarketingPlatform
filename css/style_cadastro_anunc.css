@@ -1,0 +1,462 @@
+/*MENU*/
+/*--EFEITO LINHA--*/
+.menu{
+  font-family: 'Abel', sans-serif;
+}
+.menu li{
+  list-style: none;
+  display: inline-block;
+}
+.menu li a{
+  font-family: 'Abel', sans-serif;
+  text-decoration: none;
+  position: relative;
+  color: white;
+  font-size: 18px;
+  display: block;
+  overflow: hidden;
+  transition: 0.7s all;
+  padding: 3px 0px;
+  text-transform: uppercase;
+}
+.menu li a:before{
+  content: '';
+  width: 150px;
+  position: absolute;
+  border-bottom: 8px solid white;
+  bottom: 0;
+  right: 350px;
+  transition: 0.5s all;
+}
+.menu li a:hover:before{
+  right: 0;
+}
+/*------FIM------*/ 
+
+/*----------MENU NAVEGAÇÃO----------*/
+body {
+      font-family: 'Abel', sans-serif;
+}
+ 
+header {
+      width: 100%;
+}
+ 
+.content {
+      width: 94%;
+      margin: 4em auto;
+      font-size: 20px;
+      line-height: 30px;
+      text-align: justify;
+      z-index: 10;
+}
+ 
+.logo {
+      line-height: 60px;
+      position: fixed;
+      float: left;
+      margin: 16px 46px;
+      color: #fff;
+      font-weight: bold;
+      font-size: 20px;
+      letter-spacing: 2px;
+      z-index: 10;
+}
+ 
+nav {
+      position: fixed;
+      width: 100%;
+      line-height: 60px;
+      z-index: 10;
+}
+ 
+nav ul {
+      line-height: 55px;
+      list-style: none;
+      background: rgba(0, 0, 0, 0);
+      overflow: hidden;
+      color: #fff;
+      padding: 0;
+      text-align: right;
+      margin: 0;
+      padding-right: 40px;
+      transition: 1s;
+      z-index: 10;
+}
+ 
+nav ul {
+      background: #000;
+      z-index: 10;
+}
+ 
+nav ul li {
+      display: inline-block;
+      padding: 16px 40px;
+      z-index: 10;
+}
+ 
+nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 20px;
+      z-index: 10;
+}
+ 
+.menu-icon {
+      line-height: 60px;
+      width: 100%;
+      background: #000;
+      text-align: right;
+      box-sizing: border-box;
+      padding: 15px 24px;
+      cursor: pointer;
+      color: #fff;
+      display: none;
+      z-index: 10;
+}
+
+.fa{
+  margin-top: 17px;
+}
+/*------------FIM-------------*/
+
+
+/*BARRA DE ROLAGEM*/
+::-webkit-scrollbar{
+  width: 5px;
+  background: black;
+}
+
+::-webkit-scrollbar-thumb{
+  border-radius: 10px;
+  background: #808080;
+}
+
+/*-------FIM-------*/
+
+
+html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+}
+
+/*----CODIGO IMAGEM----*/
+.card {
+      position: absolute;
+      width: 40%;
+      height: 100%;
+      background: rgba(0,0,0,.1);
+      border-top-right-radius: 340px;
+      border-bottom-right-radius: 340px;
+      left: 0;
+      border: none;
+
+}
+
+
+.card-img {
+      background-position: center;
+      width: 80%;
+      height: 100%;
+      left: 0;
+      background-size: cover;
+      background-repeat: no-repeat;
+}
+
+#img01{
+     /*Imgem aqui*/
+     position: absolute;
+     border-top-right-radius: 340px;
+     border-bottom-right-radius: 340px;
+     background-size: cover;
+     background-position: center;
+     width: 100%;
+     opacity: .6;
+    background-image: url('../Imagens/Cadastro.png');
+}
+/*---------FIM----------*/
+
+/*---------CADASTRO---------*/
+.tela{
+  height: 100%;
+  position: relative;
+}
+
+.form {
+ position: absolute;
+ top: 15%;
+ right: 0;
+ height: 79%;
+ width: 60%;
+}
+
+.form-section {
+ position: absolute;
+ padding: 40px 20px;
+ top: 8%;
+ transform: translate(14%);
+ width: 80%;
+ height: 78%;
+}
+
+.bloco{
+   position: relative;
+   display: inline-block;
+   width: 46%;
+   margin: 3px 5px 0px 10px;
+}
+
+.group_title{
+  margin-bottom: 20px;
+  transform: translateY(-43%);
+  text-align: center;
+}
+
+.group{
+   margin-bottom: 17px;
+}
+
+.verifica_razao,
+.verifica_email,
+.verifica_senha,
+.verifica_cnpj,
+.verifica_telefone,
+.verifica_confirm{
+  position: relative;
+}
+
+.verifica_razao label,
+.verifica_email label,
+.verifica_senha label,
+.verifica_cnpj label,
+.verifica_telefone label,
+.verifica_confirm label{
+   position: absolute;
+   top: 12px;
+   font-size: 18px;
+   pointer-events: none;
+   left: 0;
+   transition: all .4s;
+   color: #999;
+}
+
+
+.control:focus ~ label,
+.control:valid ~ label{
+  position: absolute;
+  top: -15px;
+  left: 0;
+  color: #D56D05;
+  font-size: 15px;
+  font-weight: bolder;
+}
+
+.control {
+ display: block;
+ width: 100%;
+ padding: 8px;
+ border-top: 0;
+ border-left: 0;
+ border-right: 0;
+ border-bottom: 1px solid silver;
+ border-radius: 0;
+ transition: all 2s;
+}
+
+/*ICONE DE ERRO DOS CAMPOS*/
+#icon_error_razao,
+#icon_error_email,
+#icon_error_senha,
+#icon_error_cnpj,
+#icon_error_telefone,
+#icon_error_confirm{
+  width: 24px;
+  position: absolute;
+  top:10px; right:5px;
+  z-index:10;
+  transition: .1s;
+  visibility: hidden;
+  outline:none;
+}
+/*------------------*/
+
+.control:focus {
+ outline: none;
+ border-bottom-color: rgba(0,0,0,0.8);
+}
+
+.botao{
+  display: block;
+  background: #D56D05;
+  color: white;
+  border-radius: 30px;
+  width: 90%;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: 200;
+  border: 0;
+  margin: 0px auto;
+  box-shadow: 4px 4px 4px silver;
+}
+
+.botao:active{
+  position:relative;
+  top:3px;
+  box-shadow:none;
+}
+
+.m20 {
+ margin-top: 15px;
+}
+
+.link {
+ text-decoration: none;
+ color: silver;
+ font-weight: 300;
+}
+
+.heading {
+ font-size: 25px;
+ letter-spacing: 2px;
+ font-weight: 200;
+}
+/*-----------FIM-----------*/
+
+/*--------RODAPE--------*/
+.rodape{
+  background: rgba(0,0,0,.9);
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  color: white;
+  padding: 8px;
+  font-size: 14px;
+}
+/*---------FIM---------*/
+
+
+/*****************--------RESPONSIVIDADE--------******************/
+/*CODIGO QUANDO CHEGAR NA PROPORÇÃO DE PIXEL INFORMADA*/
+@media(max-width: 1200px) {
+ 
+      .logo {
+            position: fixed;
+            top: 0;
+            margin-top: 16px;
+      }
+ 
+      nav ul {
+            max-height: 0px;
+            background: #000;
+            z-index: 10;
+      }
+ 
+      nav.black ul {
+            background: #000;
+            z-index: 10;
+      }
+ 
+      .showing {
+            max-height: 34em;
+            z-index: 10;
+      }
+ 
+      nav ul li {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 0;
+            text-align: center;
+            z-index: 10;
+      }
+ 
+      .menu-icon {
+            display: block;
+            z-index: 10;
+      }
+}
+/*--------------FIM------------------*/
+
+/*CODIGO QUANDO CHEGAR NA PROPORÇÃO DE PIXEL INFORMADA FIM*/
+@media all and (min-width: 838px) and (max-width: 1030px){
+     .bloco{
+      max-width: 45%;
+     }
+     .group{
+      width: 100%;
+     }
+}
+/*----------------FIM-----------------*/
+
+
+/*CODIGO QUANDO CHEGAR NA PROPORÇÃO DE PIXEL INFORMADA*/
+@media screen and (min-width: 0px) and (max-width: 844px){
+  .form {
+   width: 100%;
+   height: 100%;
+   top: 0;
+  }
+
+  .form-section{
+    transform: translate(17%,25%);
+    width: 80%;
+  }
+  .bloco{
+    max-width: 50%;
+  }
+  #img{
+     transform: translate(87%,74%);
+     opacity: 0.2;
+     height: 22%;
+  }
+}
+/*---------------FIM-----------------*/
+
+/* CODIGO PARA CELULAR QUANDO CHEGAR NA PROPORÇÃO DE PIXEL INFORMADA
+@media screen and (min-width: 0px) and (max-width: 583px){
+  .form-section{
+    transform: translate(9%,11%);
+    width: 90%;
+    height: 30%;
+  }
+
+  .form{
+    height: 50%;
+  }
+
+  header{
+    margin-bottom: 15%;
+  }
+  .rodape{
+    font-size: 10pt;
+    top: 90%;
+    bottom: 0px;
+  }
+  .bloco{
+    margin-left: 24%;
+    width: 100%;
+  }
+  .control{
+    width: 100%;
+  }
+  .botao{
+    width: 60%;
+  }
+  .group-0{
+    text-align: center;
+    margin-bottom: 13px;
+  }
+  .m20{
+    text-align: center;
+  }
+  .card-img{
+    display: none;
+  }
+  .group{
+   margin-bottom: 14px;
+  }
+}
+---------------*/
+/*****************-----------FIM----------******************/

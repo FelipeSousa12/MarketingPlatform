@@ -1,0 +1,175 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+
+body{
+	font-family: 'Abel', sans-serif;
+}
+
+header{
+	width: 100%;
+	height: 48px;
+	top: 0;
+	left: 0;
+	background-color: #454550;
+	position: relative;
+}
+
+.icon-barra{
+	position: fixed;
+	font-size: 25px;
+	font-weight: bold;
+	padding: 5px;
+	width: 40px;
+	height: 48px;
+	text-align: center;
+	background-color: #5b859a;
+	color: #fff;
+	cursor: pointer;
+	transition: all .4s;
+	left: 300px;
+	top: 0;
+}
+
+.icon-barra:hover{
+  background-color: #fff;
+  color: #5b859a;
+}
+
+#chk{
+	position: absolute;
+	display: none;
+}
+
+/*--------- MENU -----------*/
+.menu{
+	height: 100%;
+	position: fixed;
+	background-color: #222;
+	top: 0;
+	overflow: hidden;
+	transition:  all .2s;
+	z-index: 10;
+	box-shadow: 3px 3px 3px rgba(0,0,0,.2);
+}
+
+/*--- ICONES ----*/
+#icon-menu{
+   margin-right: 16px;
+   font-size: 16px;
+}
+
+#principal{
+	width: 265px;
+}
+
+#icon-logo{
+	width: 140px;
+	padding: 12px;
+	transform: translate(36%,20%);
+	margin-bottom: 0px;
+}
+
+#ul-bottom{
+	list-style: none;
+}
+
+#li-bottom #a-caminho{
+	display: block;
+	font-size: 16px;
+	padding: 8px;
+	border-bottom: solid 1px #000;
+	color: #ccc;
+	padding-left: 14px; 
+	text-decoration: none;
+	transition: all .2s;
+	text-transform: uppercase;
+	border-bottom: 1px solid silver;
+}
+
+#li-bottom #a-caminho:hover{
+	background-color: rgba(0,0,0,0.2);
+	border-left: solid 8px #D56D05;
+	padding-left: 60px;
+}
+
+#li-bottom .select{
+	display: block;
+	font-size: 16px;
+	padding: 10px;
+	border-bottom: solid 1px #000;
+	color: white;
+	padding-left: 14px; 
+	text-decoration: none;
+	transition: all .2s;
+	text-transform: uppercase;
+	border-bottom: 1px solid silver;
+	margin-top: 50px;
+	background-color: #111;
+	border-left: solid 8px #444;
+}
+
+#chk:checked ~ #principal{
+	
+}
+
+/* NOMES ABAIXO DA LOGO */
+#ul-top{
+	margin-top: 25px;
+    margin-bottom: 35px;
+}
+
+#li-top{
+	display: inline-block;
+	margin-right: 40px;
+	transform: translate(49%,70%);
+	border-radius: 20px;
+	text-transform: uppercase;
+}
+
+#li-top #a-top{
+    font-size: 11px;
+    padding: 7px;
+    border:none;
+    margin: 0 auto;
+    color: silver;
+    text-decoration: none;
+}
+
+#li-top #a-top:hover{
+	background-color: #D56D05;
+	border-radius: 17px;
+	color: white;
+}
+/* -------------------- */
+
+#icon-user{
+	font-size: 22px;
+	padding: 10px;
+	height: 27px;
+	top: 2px;
+	right:13px;
+	position: fixed;
+	color: white;
+}
+
+.session-logado{
+	padding: 13px;
+	right: 4%;
+	position: fixed;
+	text-transform: uppercase;
+	color: white;
+}
+
+#pesquisa{
+	background: white;
+	border-radius: 12px;
+	border: none;
+	position: relative;
+	top: 10px;
+	padding: 9px;
+	width: 30%;
+	left: 500px
+}
+/*--------- FIM MENU -----------*/

@@ -1,0 +1,337 @@
+/*MENU*/
+/*EFEITO LINHA*/
+.menu{
+  font-family: 'Abel', sans-serif;
+}
+.menu li{
+  list-style: none;
+  display: inline-block;
+
+}
+.menu li a{
+  font-family: 'Abel', sans-serif;
+  text-decoration: none;
+  position: relative;
+  color: white;
+  font-size: 18px;
+  display: block;
+  overflow: hidden;
+  transition: 0.7s all;
+  padding: 3px 0px;
+  text-transform: uppercase;
+}
+.menu li a:before{
+  content: '';
+  width: 150px;
+  position: absolute;
+  border-bottom: 8px solid white;
+  bottom: 0;
+  right: 350px;
+  transition: 0.5s all;
+}
+.menu li a:hover:before{
+  right: 0;
+}
+
+/*EFEITO LINHA FIM*/
+
+ 
+body {
+      font-family: "Helvetica Neue",sans-serif;
+      font-weight: lighter;
+}
+ 
+header {
+      width: 100%;
+      height: 100vh;
+      background-size: cover;
+      font-family: 'Abel', sans-serif;
+}
+ 
+.content {
+      width: 94%;
+      margin: 4em auto;
+      font-size: 20px;
+      line-height: 30px;
+      text-align: justify;
+      z-index: 10;
+}
+ 
+.logo {
+      line-height: 60px;
+      position: fixed;
+      float: left;
+      margin: 16px 46px;
+      color: #fff;
+      font-weight: bold;
+      font-size: 20px;
+      letter-spacing: 2px;
+      z-index: 10;
+}
+ 
+nav {
+      position: fixed;
+      width: 100%;
+      line-height: 60px;
+      z-index: 10;
+}
+ 
+nav ul {
+      line-height: 55px;
+      list-style: none;
+      background: rgba(0, 0, 0, 0);
+      overflow: hidden;
+      color: #fff;
+      padding: 0;
+      text-align: right;
+      margin: 0;
+      padding-right: 40px;
+      transition: 1s;
+      z-index: 10;
+}
+ 
+nav ul {
+      background: #000;
+      z-index: 10;
+}
+ 
+nav ul li {
+      display: inline-block;
+      padding: 16px 40px;
+      z-index: 10;
+}
+ 
+nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 20px;
+      z-index: 10;
+}
+ 
+.menu-icon {
+      line-height: 60px;
+      width: 100%;
+      background: #000;
+      text-align: right;
+      box-sizing: border-box;
+      padding: 15px 24px;
+      cursor: pointer;
+      color: #fff;
+      display: none;
+      z-index: 10;
+}
+
+/*ATIVA O CODIGO QUANDO CHEGAR NA PROPORÇÃO DE PIXEL INFORMADA*/
+ 
+@media(max-width: 1200px) {
+ 
+      .logo {
+            position: fixed;
+            top: 0;
+            margin-top: 16px;
+            z-index: 10;
+      }
+ 
+      nav ul {
+            max-height: 0px;
+            background: #000;
+            z-index: 10;
+      }
+ 
+      nav.black ul {
+            background: #000;
+            z-index: 10;
+      }
+ 
+      .showing {
+            max-height: 34em;
+            z-index: 10;
+      }
+ 
+      nav ul li {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 0;
+            text-align: center;
+            z-index: 10;
+      }
+ 
+      .menu-icon {
+            display: block;
+            z-index: 10;
+      }
+ 
+}
+/*ATIVA O CODIGO QUANDO CHEGAR NA PROPORÇÃO DE PIXEL INFORMADA FIM*/
+/*MENU FIM*/
+
+/*BARRA DE ROLAGEM*/
+::-webkit-scrollbar{
+  width: 5px;
+  background: black;
+}
+
+::-webkit-scrollbar-thumb{
+  border-radius: 10px;
+  background: #808080;
+}
+
+/*BARRA DE ROLAGEM FIM*/
+
+
+html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+}
+
+body {
+      font-family: "Poppins";
+      overflow: hidden;
+}
+
+.slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+}
+
+.card {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      background: #fff;
+}
+
+.card-img {
+      background-position: center;
+      width: 50%;
+      height: 100%;
+      background-size: cover;
+      background-repeat: no-repeat;
+}
+
+#img01 {
+      background-image: url("../Imagens/google-1.jpg");
+}
+
+#img02 {
+      background-image: url("../Imagens/Visualizacao.png");
+}
+
+#img03 {
+      background-image: url("../Imagens/Desenvolvedor.png");
+      opacity: .7;
+}
+
+.card-content {
+      padding: 10% 5%;
+      box-sizing: border-box;
+      width: 50%;
+      background: #0A0A0A;
+}
+
+.card-content p {
+ font-size: 16px;
+}
+
+.card-theme {
+      font-weight: 900;
+      font-size: 1.7vmin;
+      text-transform: uppercase;
+      font-family: Poppins;
+      letter-spacing: 10px;
+      color: grey;
+}
+
+.card-header {
+      font-weight: 700;
+      font-size: 54px;
+      text-transform: capitalize;
+      line-height: 1;
+      margin: 3vmin 0 3.5vmin;
+      color: #fff;
+      font-family: Poppins;
+}
+
+.card-para {
+      font-size: 1.6vmin;
+      text-align: initial;
+      font-weight: 300;
+      margin-bottom: 2.5vmin;
+      color: #fff;
+      font-family: Poppins;
+}
+
+.card-link {
+      color: #fff;
+      font-family: Poppins;
+      font-size: 1.8vmin;
+      display: block;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+}
+
+.card-link:after {
+      content: "→";
+}
+
+.prevnext {
+      position: absolute;
+      width: 4vmin;
+      height: 8vmin;
+      right: 2%;
+      bottom: 0;
+      top: 80%;
+      color: #fff;
+      margin: auto 0;
+}
+
+.pn-btn {
+      color: #fff;
+      width: 100%;
+      height: 50%;
+      border: 0;
+      background-color: transparent;
+      font-size: 20px;
+}
+
+#prev, #next {
+      position: relative;
+      cursor: pointer;
+}
+
+#prev:focus, #next:focus {
+      outline: none;
+}
+
+#prev:hover:after, #next:hover:after {
+      opacity: 1;
+}
+
+#prev:after, #next:after {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      opacity: 0.6;
+      transition: opacity 0.3s ease;
+}
+
+#prev:after {
+      content: "↑"
+}
+
+#next:after {
+      content: "↓"
+}
+
