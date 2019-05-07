@@ -38,6 +38,7 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"> 
 </head>
 <body>
+ 
   
     <?php include_once '../Util/MenuAnunc.php'; ?>
 
@@ -165,6 +166,9 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
 <!-- -------- SCRIPTS ------- -->
 <script src="../js/jquery-3.3.1.min.js"></script>
 <script src="../bootstrap/js/bootstrap.min.js"></script>
+<script src="../bootstrap/js/bootstrap.js"></script>
+<script src="../bootstrap/js/bootstrap.bundle.js"></script>
+<script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- -------- ------ ------- -->
 <script type="text/javascript">
   $(document).ready(function(){
@@ -219,9 +223,6 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
      if(valorContratado == 'false'){
        //AÇÃO DO EVENTO VERIFICAR BONUS
         verificarBonusAnunciante(id);
-     }else{
-       
-       
      }
        
 });

@@ -77,9 +77,9 @@ ul #a_caminho:hover{
 /*------ FIM -------- */
 
 .conteudo{
-	position: relative;
-	float: right;
-	height: 84%;
+	position: fixed;
+	right: 0;
+	height: 86%;
 	width: 81%;
 	transition: .7s;
 }
@@ -211,9 +211,9 @@ ul #a_caminho:hover{
 
 /*****************--------RESPONSIVIDADE--------******************/
 /*CODIGO QUANDO CHEGAR NA PROPORÇÃO DE PIXEL INFORMADA*/
-@media (min-width: 1367px) and (max-width: 1920px){
-   .conteudo{
-    width: 90%;
-   }  
+@media (min-width: 1370px) and (max-width: 1920px){
+    .conteudo{
+      width: 82%;
+    }
 }
 /*****************--------FIM RESPONSIVIDADE--------******************/

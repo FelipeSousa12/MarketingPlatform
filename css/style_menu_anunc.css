@@ -28,8 +28,10 @@ header{
 	color: #fff;
 	cursor: pointer;
 	transition: all .4s;
-	left: 300px;
+	left: 200px;
 	top: 0;
+  border-radius: 18px;
+	visibility: hidden;
 }
 
 .icon-barra:hover{
@@ -49,7 +51,6 @@ header{
 	background-color: #222;
 	top: 0;
 	overflow: hidden;
-	transition:  all .2s;
 	z-index: 10;
 	box-shadow: 3px 3px 3px rgba(0,0,0,.2);
 }
@@ -60,14 +61,32 @@ header{
 }
 
 #principal{
-	width: 265px;
+	width: 258px;
+  left: -258px;
+}
+
+#chk:checked ~ #principal{
+   transform: translateX(258px);
+}
+
+#chk:not(checked) ~ #principal{
+  transform: translateX(258px);
 }
 
 #icon-logo{
 	width: 140px;
+	margin: 0 auto;
 	padding: 12px;
-	transform: translate(36%,20%);
+	transform: translate(40%,20%);
+}
+
+#logo-reserva{
+	font-size: 35px;
+	margin: 0 auto;
+	padding: 12px;
+	transform: translateY(20%);
 	margin-bottom: 0px;
+	display: none;
 }
 
 #ul-bottom{
@@ -78,6 +97,7 @@ header{
 	display: block;
 	font-size: 16px;
 	padding: 8px;
+	padding-bottom: 2px;
 	border-bottom: solid 1px #000;
 	color: #ccc;
 	padding-left: 14px; 
@@ -87,11 +107,10 @@ header{
 	border-bottom: 1px solid silver;
 }
 
-#li-bottom #a-caminho:hover{
-	background-color: rgba(0,0,0,0.2);
-	border-left: solid 8px #D56D05;
-	padding-left: 60px;
+#li-bottom #a-caminho label{
+	cursor: pointer;
 }
+
 
 #li-bottom .select{
 	color: white;
@@ -110,10 +129,6 @@ header{
 }
 
 
-#chk:checked ~ #principal{
-	
-}
-
 /* NOMES ABAIXO DA LOGO */
 #ul-top{
 	margin-top: 25px;
@@ -126,6 +141,7 @@ header{
 	transform: translate(49%,70%);
 	border-radius: 20px;
 	text-transform: uppercase;
+	transition: all .5s;
 }
 
 #li-top #a-top{
@@ -141,6 +157,10 @@ header{
 	background-color: #D56D05;
 	border-radius: 17px;
 	color: white;
+}
+
+#li-top #a-top label{
+	cursor: pointer;
 }
 /* -------------------- */
 
@@ -173,3 +193,205 @@ header{
 	left: 500px
 }
 /*--------- FIM MENU -----------*/
+
+/*****************--------RESPONSIVIDADE--------******************/
+/*CODIGO QUANDO CHEGAR NA PROPORÇÃO DE PIXEL INFORMADA*/
+@media (max-width: 1160px){
+   #principal{
+   	  width: 230px;
+   	  left: -230px;
+   } 
+
+   #chk:checked ~ #principal{
+      transform: translateX(230px);
+   } 
+
+   #chk:not(checked) ~ #principal{
+    transform: translateX(230px);
+   }
+
+   #logo-reserva{
+   	 display: none;
+   }
+
+   #li-top{
+   	 margin-right: 32px;
+   }
+
+   #icon-logo{
+     transform: translate(30%,20%);
+   	 transition: all .5s;
+   }
+}
+
+@media (max-width: 1080px){
+   #principal{
+   	  width: 200px;
+   	  left: -200px;
+   } 
+
+   #chk:checked ~ #principal{
+      transform: translateX(200px);
+   } 
+
+   #chk:not(checked) ~ #principal{
+    transform: translateX(200px);
+  }
+
+   #logo-reserva{
+   	 display: none;
+   }
+
+   #icon-logo{
+   	transform: translate(18%,20%);
+   	transition: all .5s;
+   }
+
+   #li-top{
+   	 display: block;
+   	 padding-bottom: 6px;
+   	 transform: translate(39%,70%);
+   }
+
+}
+
+@media (max-width: 916px){
+   #principal{
+   	  width: 180px;
+   	  left: -180px;
+   }
+
+   #chk:checked ~ #principal{
+      transform: translateX(180px);
+   } 
+
+   #chk:not(checked) ~ #principal{
+    transform: translateX(180px);
+  }
+
+   #icon-logo{
+   	display: none;
+   }
+
+   #logo-reserva{
+   	 display: block;
+   	 font-size: 30px;
+   }
+
+   #li-top{
+   	 transform: translate(35%,70%);
+   }
+}
+
+@media (max-width: 818px){
+   #principal{
+   	  width: 150px;
+      left: -330px;
+   } 
+
+   #chk:checked ~ #principal{
+      transform: translateX(330px);
+   }
+
+   #icon-logo{
+   	display: none;
+   }
+
+   #logo-reserva{
+   	 display: block;
+   	 transition: all .5s;
+   }
+
+   #li-top{
+   	margin: 0 auto;
+   	transform: translate(36%,70%);
+   }
+
+   #li-top #a-top label{
+     text-indent: -9999px;
+   }
+
+   #a-top #icon-menu{
+   	margin-right: 0;
+   	padding: 5px;
+   }
+
+   #li-bottom #a-caminho label{
+   	 text-indent: -9999px;
+   }
+
+   #li-bottom #a-caminho{
+   	border-bottom: none;
+   }
+
+   #li-bottom .select{
+   	 text-align: center;
+   	 padding: 6px;
+   	 margin-top: 30px;
+   }
+
+   #li-bottom #a-caminho #icon-menu{
+   	 transform: translateX(41px);
+   	 transition: all .5s;
+   	 border: 1px solid rgba(0,0,0,0.9);
+   	 padding: 9px;
+   	 border-radius: 10px;
+   	 box-shadow: 1px 1px 1px black;
+   } 
+
+   .icon-barra{
+   	visibility: visible;
+    transition: all .3s;
+    left: 160px;
+   }
+}
+
+@media (max-width: 660px){
+	#principal{
+   	  width: 130px;
+  } 
+
+   #li-top{
+   	transform: translate(34%,70%);
+   }
+
+   #li-bottom #a-caminho #icon-menu{
+   	 transform: translateX(32px);
+   }
+
+   .icon-barra{
+     left: 140px;
+   } 
+}
+@media (max-width: 551px){
+	 #principal{
+   	  width: 110px;
+   }
+
+   #li-bottom #a-caminho #icon-menu{
+   	 transform: translateX(25px);
+   } 
+
+   .icon-barra{
+     left: 120px;
+   }  
+}
+
+@media (max-width: 450px){
+	#principal{
+   	  width: 100px;
+    }
+
+   #li-top{
+   	transform: translate(28%,70%);
+   } 
+
+   #li-bottom #a-caminho #icon-menu{
+   	 transform: translateX(16px);
+   } 
+
+   .icon-barra{
+     left: 110px;
+   }  
+}
+/*****************--------FIM RESPONSIVIDADE--------******************/
