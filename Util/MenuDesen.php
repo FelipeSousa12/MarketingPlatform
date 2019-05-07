@@ -29,28 +29,149 @@
     	
         <div class="img">
             <img src="../Imagens/Logo.png" id="icon-logo">
+            <img src="../Imagens/logo_planeta.png" id="logo-reserva">
         </div>
 
         <ul id="ul-top">
-          <li id="li-top"><a href="../Telas/PrincipalDesen.php" id="a-top"><i class="fas fa-home" id="icon-menu"></i>Inicio</a></li>
-          <li id="li-top"><a href="../Login/LogoutDesen.php" id="a-top"><i class="fas fa-power-off" id="icon-menu"></i>sair</a></li>
+          <li id="li-top">
+            <a href="../Telas/PrincipalDesen.php" id="a-top">
+              <i class="fas fa-home" id="icon-menu"></i>  
+              <label>Inicio</label>
+            </a></li>
+          <li id="li-top">
+            <a href="../Login/LogoutDesen.php" id="a-top">
+              <i class="fas fa-power-off" id="icon-menu"></i>
+              <label>sair</label>
+            </a>
+         </li>
         </ul>
 
         <ul id="ul-bottom">
       		<li id="li-bottom"><a class="select">-- Developer --</a></li>
-      		<li id="li-bottom"><a href="#" id="a-caminho"><i class="fas fa-mobile-alt" id="icon-menu"></i>Aplicativos</a></li>
-          <li id="li-bottom"><a href="#" id="a-caminho"><i class="fas fa-file-code" id="icon-menu"></i>API</a></li>
-      		<li id="li-bottom"><a href="#" id="a-caminho"><i class="fas fa-chart-bar" id="icon-menu"></i>Gráficos</a></li>
-      		<li id="li-bottom"><a href="#" id="a-caminho"><i class="fas fa-scroll" id="icon-menu"></i>Relatórios</a></li>
+      		<li id="li-bottom">
+            <a href="#" id="a-caminho">
+              <i class="fas fa-mobile-alt icoApp" id="icon-menu" data-toggle="popover" data-placement="left" data-content="Aplicativos"></i>
+              <label>Aplicativos</label>
+            </a>
+          </li>
+          <li id="li-bottom">
+            <a href="#" id="a-caminho">
+              <i class="fas fa-file-code icoApi" id="icon-menu" data-toggle="popover" data-placement="left" data-content="API"></i>
+              <label>API</label>
+            </a>
+          </li>
+      		<li id="li-bottom">
+            <a href="#" id="a-caminho">
+              <i class="fas fa-chart-bar icoGraf" id="icon-menu" data-toggle="popover" data-placement="left" data-content="Gráficos"></i>
+              <label>Gráficos</label>
+            </a>
+          </li>
+      		<li id="li-bottom">
+            <a href="#" id="a-caminho">
+              <i class="fas fa-scroll icoRel" id="icon-menu" data-toggle="popover" data-placement="left" data-content="Relatórios"></i>
+              <label>Relatórios</label>
+            </a>
+          </li>
       	</ul>
 
         <ul id="ul-bottom">
           <li id="li-bottom"><a class="select">-- Conta --</a></li>
-          <li id="li-bottom"><a href="#" id="a-caminho"><i class="fas fa-hand-holding-usd" id="icon-menu"></i>Pagamentos</a></li>
-          <li id="li-bottom"><a href="#" id="a-caminho"><i class="fas fa-cog" id="icon-menu"></i>Configurações</a></li>
+          <li id="li-bottom">
+            <a href="#" id="a-caminho">
+              <i class="fas fa-hand-holding-usd icoPag" id="icon-menu" data-toggle="popover" data-placement="left" data-content="Pagamentos"></i>
+              <label>Pagamentos</label>
+            </a>
+          </li>
+          <li id="li-bottom">
+            <a href="#" id="a-caminho">
+              <i class="fas fa-cog icoConfig" id="icon-menu" data-toggle="popover" data-placement="left" data-content="Configurações"></i>
+              <label>Configuração</label>
+            </a>
+          </li>
         </ul>
         
     </nav>
 
 </body>
+<!-- -------- SCRIPTS ------- -->
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script src="../bootstrap/js/bootstrap.min.js"></script>
+<script src="../bootstrap/js/bootstrap.js"></script>
+<script src="../bootstrap/js/bootstrap.bundle.js"></script>
+<script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ------------------------ -->
+<script type="text/javascript">
+
+             $("#li-bottom #a-caminho").hover(
+                    function(){
+
+                      var elemento = $(this)[0].lastElementChild.innerText;
+                       
+                        //Ao posicionar o cursor sobre a div
+                        if($('#principal').width() > 150){
+
+                           $(this).css(
+                           {
+                           'background-color':'rgba(0,0,0,0.2)',
+                           'border-left':'solid 8px #D56D05',
+                           'padding-left':'37px'
+                            }
+                         );
+
+                        }else{
+
+                           $(this).css(
+                               {
+                               'background-color':'rgba(0,0,0,0.2)',
+                               'border-left':'none',
+                                }
+                            );
+
+                           mostrar(elemento);
+
+                        }
+                    },
+                    function(){
+                        //Ao remover o cursor da div
+                        $(".icoApp").popover('hide');
+                        $(".icoApi").popover('hide');
+                        $(".icoGraf").popover('hide');
+                        $(".icoRel").popover('hide');
+                        $(".icoPag").popover('hide');
+                        $(".icoConfig").popover('hide');
+
+                        $(this).css(
+                           {
+                           'background-color':'#222',
+                           'border-left':'none',
+                           'padding-left':'14px'
+                            }
+                        );
+                    }
+             );
+
+          function mostrar(elemento){
+            switch (elemento){
+                case 'APLICATIVOS':
+                    $(".icoApp").popover('show');
+                break;
+                case 'API':
+                    $(".icoApi").popover('show');
+                break;
+                case 'GRÁFICOS':
+                    $(".icoGraf").popover('show');
+                break;
+                case 'RELATÓRIOS':
+                    $(".icoRel").popover('show');
+                break;
+                case 'PAGAMENTOS':
+                    $(".icoPag").popover('show');
+                break;
+                case 'CONFIGURAÇÃO':
+                    $(".icoConfig").popover('show');
+                break;
+                }
+          }         
+
+</script>
 </html>

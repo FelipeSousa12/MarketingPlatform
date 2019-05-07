@@ -1,17 +1,17 @@
 /*--------- CORPO ---------*/
 .conteudo{
-	position: relative;
-	height: 84%;
-	float: right;
+	position: fixed;
+	height: 87%;
+	right: 0;
 	width: 81%;
 	transition: .7s;
 }
 
 .conteudo-container{
 	right: 0;
-	position: fixed;
-	height: 87%;
-	width: 84%;
+	position: relative;
+	height: 100%;
+	width: 100%;
 	overflow: auto;
   background: rgba(0,0,0,0.1);
 }
@@ -21,9 +21,10 @@
   display: block;
   text-align: center;
   background: white;
-  width: 94%;
+  width: 95%;
   height: 94%; 
-  transform: translate(60px,20px);
+  margin: 0 auto;
+  transform: translate(8px,20px);
   position: relative;
 }
 
@@ -118,6 +119,22 @@ ul #a_caminho:hover{
    .conteudo{
     width: 90%;
    }  
+}
+
+@media (min-width: 1370px) and (max-width: 1920px){
+    .conteudo{
+      width: 83%;
+    }
+}
+
+@media (max-width: 818px){
+   .conteudo-container{
+     width: 100%;
+   }
+
+   .conteudo{
+     width: 100%;
+   }
 }
 /*****************--------FIM RESPONSIVIDADE--------******************/
 

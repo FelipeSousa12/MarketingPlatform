@@ -53,6 +53,9 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
 <!-- -------- SCRIPTS ------- -->
 <script src="../js/jquery-3.3.1.min.js"></script>
 <script src="../bootstrap/js/bootstrap.min.js"></script>
+<script src="../bootstrap/js/bootstrap.js"></script>
+<script src="../bootstrap/js/bootstrap.bundle.js"></script>
+<script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- -------- ------ ------- -->
 <!-- Start CDN do chart.js-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>

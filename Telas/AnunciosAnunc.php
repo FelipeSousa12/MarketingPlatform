@@ -32,6 +32,59 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
              <li id="li_caminho"><a href="../Telas/AnunciosAnunc.php" id="a_caminho">Anúncios</a></li>
            </ul>
        </div>
+
+       <div class="conteudo-container">
+
+           <div class="upload">          
+           
+               <div class="group">
+                    <div class="campo">
+                        <input type="text" name="nome" class="control" autocomplete="off" required>
+                        <label>Nome</label>
+                    </div>
+                    <div class="campo">
+                        <input type="text" name="nome" class="control" autocomplete="off" required> 
+                        <label>Tamanho</label>
+                    </div>   
+                     <div class="campo">
+                        <select class="control" required>
+                          <option>---</option>
+                          <option>Banner</option>
+                          <option>Rodapé</option>
+                          <option>Interstial</option>
+                        </select> 
+                        <label>Tipo</label>
+                    </div>   
+               </div>
+
+               <div class="group">
+                 
+                 <div class="mostrar-img"></div>
+
+                  <form id="formulario" action="">
+
+                       <input type="file" name="foto" id="imagem">
+
+                       <div class="botoes">
+
+                          <div class="group-btn">
+                             <input type="button" name="botao" class="botao" value="Salvar Anúncio" id="btnSalvarAnunc">
+                          </div>
+
+                          <div class="group-btn">
+                              <input type="button" name="botao" class="botao" value="Pesquisar Anúncios">
+                          </div>
+
+                       </div>
+
+                  </form>
+                 
+               </div>
+
+          </div>
+
+         
+       </div>
         
      
     </section>
@@ -43,4 +96,31 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
 <script src="../bootstrap/js/bootstrap.bundle.js"></script>
 <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- -------- ------ ------- -->
+<script type="text/javascript">
+    $(document).ready(function(){
+            
+            $('#btnSalvarAnunc').click(function(){
+
+              var img = new FormData();
+              img.append('file', $('#imagem'));
+
+                $.ajax({
+                    url: '../Util/Upload/Upload.php',
+                    method: 'POST',
+                    datatype: 'json',
+                    data: img,
+                    success: function (retorno) {
+
+                      
+                    }, // Se houver algum erro na requisição
+                    error: function (){
+
+                    }
+
+                });
+
+            });
+     
+    });
+</script>
 </html>

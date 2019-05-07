@@ -17,21 +17,21 @@ header{
 }
 
 .icon-barra{
-	position: fixed;
-	font-size: 25px;
-	font-weight: bold;
-	padding: 5px;
-	width: 40px;
-	height: 48px;
-	text-align: center;
-	background-color: #5b859a;
-	color: #fff;
-	cursor: pointer;
-	transition: all .4s;
-	left: 200px;
-	top: 0;
+  position: fixed;
+  font-size: 25px;
+  font-weight: bold;
+  padding: 3px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  background-color: #5b859a;
+  color: #fff;
+  cursor: pointer;
+  transition: all .4s;
+  left: 200px;
+  top: 3px;
   border-radius: 18px;
-	visibility: hidden;
+  visibility: hidden;
 }
 
 .icon-barra:hover{

@@ -216,4 +216,14 @@ ul #a_caminho:hover{
       width: 82%;
     }
 }
+
+@media (max-width: 818px){
+   .conteudo-container{
+     width: 100%;
+   }
+
+   .conteudo{
+     width: 100%;
+   }
+}
 /*****************--------FIM RESPONSIVIDADE--------******************/

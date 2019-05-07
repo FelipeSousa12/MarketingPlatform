@@ -1,17 +1,17 @@
 /*--------- CORPO ---------*/
 .conteudo{
-	position: relative;
-	height: 84%;
-	float: right;
+	position: fixed;
+	height: 86%;
+	right: 0;
 	width: 81%;
 	transition: .7s;
 }
 
 .conteudo-container{
 	right: 0;
-	position: fixed;
-	height: 87%;
-  width: 84%;
+	position: relative;
+	height: 100%;
+  width: 100%;
 	overflow: auto;
   background: rgba(0,0,0,0.1);
 }
@@ -21,15 +21,16 @@
   display: block;
   text-align: center;
   background: white;
-  width: 94%;
+  width: 95%;
   height: 94%;
-  transform: translate(60px,20px);
+  margin: 0 auto;
+  transform: translate(8px,20px);
   position: relative;
 }
 
 .conteudo-container::-webkit-scrollbar { width:5px; background: #00beaa;}
 .conteudo-container::-webkit-scrollbar-track { background: #4e4e4e; }
-.conteudo-container::-webkit-scrollbar-thumb { border-radius:17px; background: #00beaa;}
+.conteudo-container::-webkit-scrollbar-thumb { border-radius:17px; background: #D56D05;}
 .conteudo-container::-webkit-scrollbar-corner { visibility: hidden;}
 .conteudo-container::-webkit-resizer { visibility: hidden; }
 
@@ -84,7 +85,7 @@ ul #a_caminho:hover{
 }
 
 .caminho{
-	position: relative;
+	  position: relative;
     height: 40px;
     border: none;
     z-index: 5;
@@ -97,10 +98,20 @@ ul #a_caminho:hover{
 
 /*****************--------RESPONSIVIDADE--------******************/
 /*CODIGO QUANDO CHEGAR NA PROPORÇÃO DE PIXEL INFORMADA*/
-@media (min-width: 1367px) and (max-width: 1920px){
+@media (min-width: 1370px) and (max-width: 1920px){
+    .conteudo{
+      width: 82%;
+    }
+}
+
+@media (max-width: 818px){
+   .conteudo-container{
+     width: 100%;
+   }
+
    .conteudo{
-    width: 90%;
-   }  
+     width: 100%;
+   }
 }
 /*****************--------FIM RESPONSIVIDADE--------******************/
 
