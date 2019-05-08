@@ -14,15 +14,12 @@
 .conteudo-container::-webkit-resizer { visibility: hidden; }
 
 .conteudo-container{
-  padding: 0;
-  display: block;
   text-align: center;
-  background: white;
-  width: 95%;
-  height: 90%;
-  margin: 0 auto;
-  transform: translate(8px,20px);
+  width: 100%;
+  height: 100%;
   position: relative;
+  right: 0;
+  overflow: auto;
 }
 
 .botao{
@@ -54,15 +51,19 @@
 }
 
 .upload{
-    transform: translateY(50px);
+    transform: translateY(30px);
     margin: 0 auto;
     position: relative;
+    padding: 8px;
+    width: 90%;
+    height: 72%;
 }
 
 .botoes{
+   position: fixed;
    margin: 0 auto;
-   position: relative;
-   transform: translate(-40px,55px);
+   left: 17%;
+   bottom: 0;
 }
 
 .group-btn{
@@ -78,15 +79,21 @@
   margin-right: 50px;
 }
 
-.group:nth-child(1){
- width: 30%;
- transform: translateY(-130px);
+#selectTipo{
+  cursor: pointer;
 }
 
+.group:nth-child(1){
+ width: 30%;
+}
+
+.group:nth-child(2){
+ transform: translateY(47px);
+}
 
 .campo{
  position: relative;
- padding-bottom: 14px;
+ margin-bottom: 18px;
 }
 
 .campo label{
@@ -109,12 +116,12 @@
   font-weight: bolder;
 }
 
-.control:focus {
+.control:focus{
  outline: none;
  border-bottom-color: rgba(0,0,0,0.8);
 }
 
-.control {
+.control{
  width: 100%;
  padding: 8px;
  padding-bottom: 3px;
@@ -124,14 +131,50 @@
  transition: all 2s;
 }
 
-.mostrar-img{
+/* ------ IMAGEM E UPLOAD ------- */
+.preview-img{
    border: 1px solid rgba(0,0,0,0.1);
    width: 200px;
-   height: 250px;
-   margin-bottom: 10px;
+   height: 280px;
    text-align: center;
+   transition: .5s;
 }
 
+.marcador{
+  border: 1px solid rgba(0,0,0,0.1);
+  padding: 10px;
+  border-radius: 20px;
+}
+
+#imagem{
+   cursor: pointer;
+   display: none;
+}
+
+.dados-img{
+  position: relative;
+}
+
+#btnUpload{
+    position: fixed;
+    margin: 0 auto;
+    width: 100%;
+    right: 0;
+    margin-top: 14px; 
+    padding: 8px;
+    font-size: 14px;
+    color: #D56D05;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid #D56D05;
+    box-shadow: 3px 3px 3px rgba(0,0,0,.2);
+}
+
+#btnUpload i{
+   margin-right: 10px;
+   font-size: 19px;
+}
+/* ------ FIM IMAGEM E UPLOAD ------- */
 /*-------- CAMINHO PAGINA --------- */
 ul{
   list-style: none;

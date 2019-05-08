@@ -41,13 +41,9 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
                     <div class="campo">
                         <input type="text" name="nome" class="control" autocomplete="off" required>
                         <label>Nome</label>
-                    </div>
-                    <div class="campo">
-                        <input type="text" name="nome" class="control" autocomplete="off" required> 
-                        <label>Tamanho</label>
-                    </div>   
+                    </div> 
                      <div class="campo">
-                        <select class="control" required>
+                        <select class="control" id="selectTipo" required>
                           <option>---</option>
                           <option>Banner</option>
                           <option>Rodapé</option>
@@ -59,27 +55,27 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
 
                <div class="group">
                  
-                 <div class="mostrar-img"></div>
+                  <div class="marcador">
+                      <img class="preview-img"/>
+                  </div>
 
-                  <form id="formulario" action="">
-
+                  <div class="dados-img">
+                       <label for="imagem" id="btnUpload"><i class="fas fa-upload"></i>Upload Arquivo</label>
                        <input type="file" name="foto" id="imagem">
-
-                       <div class="botoes">
-
-                          <div class="group-btn">
-                             <input type="button" name="botao" class="botao" value="Salvar Anúncio" id="btnSalvarAnunc">
-                          </div>
-
-                          <div class="group-btn">
-                              <input type="button" name="botao" class="botao" value="Pesquisar Anúncios">
-                          </div>
-
-                       </div>
-
-                  </form>
-                 
+                  </div>
                </div>
+
+                <div class="botoes">
+
+                    <div class="group-btn">
+                         <input type="button" name="botao" class="botao" value="Salvar Anúncio" id="btnSalvarAnunc">
+                    </div>
+
+                    <div class="group-btn">
+                         <input type="button" name="botao" class="botao" value="Pesquisar Anúncios">
+                    </div>
+
+                </div>
 
           </div>
 
@@ -98,7 +94,53 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
 <!-- -------- ------ ------- -->
 <script type="text/javascript">
     $(document).ready(function(){
+
+        $('#selectTipo').on('change',function(){
+            if($(this).val() == 'Rodapé'){
+              $(".preview-img").replaceWith('<img class="preview-img" style="width:500px;height:90px;transition: .6s;">');
+            }else{
+              if($(this).val() == 'Banner'){
+                 $(".preview-img").replaceWith('<img class="preview-img">');
+              }
+            }
+        });
+
+
+          $('#imagem').on('change',function(e){
+            file = e.target.files[0];
             
+            var reader = new FileReader(); //CARREGA O UPLOAD DA IMAGEM
+            var imagem = new Image(); //VERIFICA A DIMENSAO DA IMAGEM
+            var largura;
+            var altura;
+
+
+              reader.onload = function(){
+
+                  imagem.onload = function(){
+
+                      if(this.width > 1200){
+                        alert('largura grande!');
+                        console.log('Largura: ' + this.width);
+                        console.log('Altura: ' + this.height);
+                        $('.marcador').css('border','1px solid red');
+                    }else{
+                      $('.preview-img').attr("src",reader.result);
+                      $('.marcador').css('border','1px solid #3CB371');
+                    }
+                    
+                }
+              
+              imagem.src = reader.result;
+
+              }
+
+            reader.readAsDataURL(file);
+
+          });
+
+            
+
             $('#btnSalvarAnunc').click(function(){
 
               var img = new FormData();
