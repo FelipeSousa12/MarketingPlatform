@@ -68,11 +68,11 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
                 <div class="botoes">
 
                     <div class="group-btn">
-                         <input type="button" name="botao" class="botao" value="Salvar Anúncio" id="btnSalvarAnunc">
+                         <button class="botao" id="btnSalvarAnunc">Salvar Anúncio</button>
                     </div>
 
                     <div class="group-btn">
-                         <input type="button" name="botao" class="botao" value="Pesquisar Anúncios">
+                         <button class="botao" id="btnPesquisarAnunc">Pesquisar</button>
                     </div>
 
                 </div>
@@ -84,6 +84,37 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
         
      
     </section>
+<!----------------- MODAL FORM ------------------->
+<div class="modal fade" id="ModalAlert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="border-radius: 20px;">
+      <div class="modal-body" style="text-align: center;border-radius: 20px;" id="quadro">
+        <span id="mensagem" style="font-weight: bold;"></span>
+      </div>
+    </div>
+  </div>
+</div>
+<!----------------- MODAL FORM ------------------->
+<!----------------- MODAL TERMOS DE USO ------------------->
+<div class="modal fade" id="ModalPesquisaAnuncios" tabindex="-1" role="dialog"  aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="TituloModalCentralizado" style="font-weight: 800;color: #D56D05;">ANÚNCIOS</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="body-info" style="height: 340px; width: 490px;">
+        <div class="row"><!----- ANUNCIOS EXIBIDOS AQUI -----></div>
+      </div>
+      <div class="modal-footer">
+        <!--<button type="button" class="btn btn-primary" id="btnAceitarTermo">Aceitar Termo</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+<!----------------- FIM MODAL INFORMAÇÕES ------------------->
 </body>
 <!-- -------- SCRIPTS ------- -->
 <script src="../js/jquery-3.3.1.min.js"></script>
@@ -93,7 +124,12 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
 <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- -------- ------ ------- -->
 <script type="text/javascript">
-    $(document).ready(function(){
+  $(document).ready(function(){
+
+    console.log($('#imagem')[0].files.length);
+
+
+      var id = '<?php echo $_SESSION['SESSION_ANUNC_ID']; ?>';
 
         $('#selectTipo').on('change',function(){
             if($(this).val() == 'Rodapé'){
@@ -124,10 +160,10 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
                         console.log('Largura: ' + this.width);
                         console.log('Altura: ' + this.height);
                         $('.marcador').css('border','1px solid red');
-                    }else{
-                      $('.preview-img').attr("src",reader.result);
-                      $('.marcador').css('border','1px solid #3CB371');
-                    }
+                      }else{
+                        $('.preview-img').attr("src",reader.result);
+                        $('.marcador').css('border','1px solid #3CB371');
+                      }
                     
                 }
               
@@ -143,26 +179,107 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
 
             $('#btnSalvarAnunc').click(function(){
 
-              var img = new FormData();
-              img.append('file', $('#imagem'));
+              var qtdImgSelecionadas = $('#imagem')[0].files.length;
+              var formData = new FormData();
+              
+              if(qtdImgSelecionadas <= 0){
 
-                $.ajax({
-                    url: '../Util/Upload/Upload.php',
-                    method: 'POST',
-                    datatype: 'json',
-                    data: img,
-                    success: function (retorno) {
+                 alert('Selecione uma imagem');
 
-                      
-                    }, // Se houver algum erro na requisição
-                    error: function (){
+              }else{
 
-                    }
+                 formData.append('file', $('#imagem')[0].files[0]);
+                 formData.append('ModeloAnuncio', $('#selectTipo').val());
+                 formData.append('id', id);
 
-                });
+                    $.ajax({
+                          url: '../Anuncio/Upload.php',
+                          method: 'POST',
+                          dataType: 'JSON',
+                          data: formData,
+                          processData: false,  
+                          contentType: false,
+                          success: function(response){
 
+                            if(response.status){
+
+                                $('#ModalAlert').modal('show');
+                                $('#mensagem').text(response.valor);
+                                $('#quadro').css('background','#D0F5A9'); 
+
+                                window.setTimeout(function(){
+                                    $('#ModalAlert').modal('hide');
+                                 },2100);
+
+                                $('#selectTipo').val($("#selectTipo option:first").val());
+                                $(".preview-img").replaceWith('<img class="preview-img">');
+
+                                $('#imagem').val('');
+                                console.log($('#imagem')[0].files.length);
+
+                            }else{
+
+                               $('#ModalAlert').modal('show');
+                               $('#mensagem').text(response.valor);
+                               $('#quadro').css('background','#FA5858'); 
+
+                               window.setTimeout(function(){
+                                    $('#ModalAlert').modal('hide');
+                               },2100);
+
+                            }
+          
+
+                          },error: function(error){
+
+                          }
+                      });
+                  
+              }
+
+            });
+
+
+            // ABIR ANUNCIOS
+            $('#btnPesquisarAnunc').click(function(){
+               $('#ModalPesquisaAnuncios').modal('show');
             });
      
     });
+</script>
+<script type="text/javascript">
+
+        var identificador = '<?php echo $_SESSION['SESSION_ANUNC_ID']; ?>';
+
+        //PESQUISAR AO APARECER O MODAL DE PESQUISA
+        $('#ModalPesquisaAnuncios').on('show.bs.modal',function (e){
+            
+             $.ajax({
+                url: '../Anuncio/PesquisarAnuncios.php',
+                type: 'POST',
+                datatype: 'JSON',
+                data: {IdAnunc: identificador},
+                success: function(response){
+
+                  console.log(response);
+
+                  response.forEach(function(element){
+
+                    var div = document.createElement('div');
+
+                    $(div).attr('class','col');
+                    $(div).html(element.Anuncio);
+
+                    $('.modal-body .row').append(div);
+
+                 });
+
+                },error: function(data){
+                    console.log(data);
+                }
+            });
+        
+      });
+  
 </script>
 </html>

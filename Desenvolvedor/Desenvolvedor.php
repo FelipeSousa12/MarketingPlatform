@@ -21,7 +21,7 @@ class Desenvolvedor extends baseBD {
         } else {
             $this->campos_valores = $campos;
         }
-        $this->campopk="ID_DESENVOLVEDOR";
+        $this->campopk="IDDESENVOLVEDOR";
     }
 
 }
