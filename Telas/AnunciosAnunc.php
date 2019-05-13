@@ -2,6 +2,7 @@
 ini_set('session.save_path',realpath(dirname($_SERVER['DOCUMENT_ROOT']) . '/../tmp'));
 session_start();
 
+
 if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_SENHA'])){
      header("Location: ../Telas/Login.php");
 }
@@ -106,7 +107,7 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
         </button>
       </div>
       <div class="modal-body" id="body-info" style="height: 340px; width: 490px;">
-        <div class="row"><!----- ANUNCIOS EXIBIDOS AQUI -----></div>
+        <div class="row"><!----RESULTADOS AQUII---></div>
       </div>
       <div class="modal-footer">
         <!--<button type="button" class="btn btn-primary" id="btnAceitarTermo">Aceitar Termo</button> -->
@@ -125,9 +126,6 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
 <!-- -------- ------ ------- -->
 <script type="text/javascript">
   $(document).ready(function(){
-
-    console.log($('#imagem')[0].files.length);
-
 
       var id = '<?php echo $_SESSION['SESSION_ANUNC_ID']; ?>';
 
@@ -249,10 +247,22 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
 </script>
 <script type="text/javascript">
 
-        var identificador = '<?php echo $_SESSION['SESSION_ANUNC_ID']; ?>';
+       var identificador = '<?php echo $_SESSION['SESSION_ANUNC_ID']; ?>';
 
         //PESQUISAR AO APARECER O MODAL DE PESQUISA
-        $('#ModalPesquisaAnuncios').on('show.bs.modal',function (e){
+       $('#ModalPesquisaAnuncios').on('show.bs.modal',function (e){
+
+         // REMOVER DADOS ANTES DE ABRIR MODAL ---------------->
+           var qtd = $('.modal-body .row')[0].childElementCount;
+           var pai = $('.modal-body .row')[0];
+           var filhos = $('.modal-body .row')[0].children;
+
+          for (var i = 0; i < qtd; i++) {
+            if(filhos.length >= 0){
+             pai.removeChild(filhos[0]);
+            }
+          }
+        //------------------------- ---------------->
             
              $.ajax({
                 url: '../Anuncio/PesquisarAnuncios.php',
