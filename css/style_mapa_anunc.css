@@ -79,7 +79,7 @@ ul #a_caminho:hover{
 .conteudo{
 	position: fixed;
 	right: 0;
-	height: 86%;
+	height: 87%;
 	width: 81%;
 	transition: .7s;
 }
@@ -87,6 +87,8 @@ ul #a_caminho:hover{
 .container-body{
 	overflow: auto;
 	height: 100%;
+	position: relative;
+	width: 100%;
 	padding: 5px;
 	padding-top: 17px;
 }
@@ -98,11 +100,11 @@ ul #a_caminho:hover{
 .container-body::-webkit-resizer { visibility: hidden; }
 
 .container-group{  
-  padding: 0;
-  text-align: center;
-  width: 99%;
-  float: right;
+  padding-bottom: 10px;
+  width: 98%;
   height: 95%;
+  display: block;
+  margin: 0 auto;
   position: relative;
 }
 
@@ -111,8 +113,14 @@ ul #a_caminho:hover{
 	position: relative;
 	margin: 0;
 	padding-left: 0;
-	margin-right: 70px;
-	margin-left: 50px;
+}
+
+.group-1:nth-child(1){
+   margin-left: 20px;
+}
+
+.group-1:nth-child(2){
+   margin-left: 100px;
 }
 
 .group-2{
@@ -122,6 +130,7 @@ ul #a_caminho:hover{
 }
 
 .cont-0{
+	display: block;
 	float: left;
 	margin-bottom: 12px;
 	margin-top: 8px;
@@ -129,6 +138,7 @@ ul #a_caminho:hover{
 
 .cont-1{
 	float: right;
+	display: block;
 	margin-bottom: 12px;
 	margin-top: 8px;
 }
@@ -161,7 +171,7 @@ ul #a_caminho:hover{
 	 border-bottom: 1px solid silver;
 	 border-radius: 2px;
 	 transition: all 2s;
-	 width: 170%;
+	 width: 160%;
 }
 
 .campo:focus{
@@ -206,6 +216,7 @@ ul #a_caminho:hover{
 	margin: 0 auto;
 	height: 95%;
     width: 100%;
+    transition: .4s;
 }
 /*---------------*/
 
@@ -213,7 +224,7 @@ ul #a_caminho:hover{
 /*CODIGO QUANDO CHEGAR NA PROPORÇÃO DE PIXEL INFORMADA*/
 @media (min-width: 1370px) and (max-width: 1920px){
     .conteudo{
-      width: 82%;
+      width: 83%;
     }
 }
 
@@ -225,5 +236,53 @@ ul #a_caminho:hover{
    .conteudo{
      width: 100%;
    }
+}
+
+@media (max-width: 616px){
+   .cont-1,.cont-0{
+   	 margin-bottom: 10px;
+   }
+
+   .cont-0{
+   	 position: relative;
+   	 transition: .5s; 
+   	 left: 60px;
+   }
+
+   .cont-1{
+   	 position: relative;
+     transition: 5s;
+     right: 100px;
+   }
+
+   .container-group{  
+   	margin-bottom: 20px;
+   }
+
+   .group-2:nth-child(1) > button{
+   	 margin-left: 10px;
+   }
+}
+@media (max-width: 484px){
+
+   .cont-0{
+   	 left: 50px;
+   }
+ 
+}
+
+@media (max-width: 460px){
+
+   .cont-0{
+   	 left: 30px;
+   }
+ 
+}
+@media (max-width: 430px){
+
+   .cont-0{
+   	 left: 10px;
+   }
+ 
 }
 /*****************--------FIM RESPONSIVIDADE--------******************/

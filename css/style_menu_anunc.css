@@ -163,6 +163,13 @@ header{
 	cursor: pointer;
 }
 /* -------------------- */
+.cabec-login{
+  float: right;
+}
+
+.login{
+  display: inline-block;
+}
 
 #icon-user{
 	font-size: 24px;
@@ -170,14 +177,13 @@ header{
 	height: 27px;
 	top: 2px;
 	right:13px;
-	position: fixed;
+	position: relative;
 	color: white;
 }
 
 .session-logado{
-	padding: 13px;
-	right: 4%;
-	position: fixed;
+	right: 15%;
+	position: relative;
 	text-transform: uppercase;
 	color: white;
 }

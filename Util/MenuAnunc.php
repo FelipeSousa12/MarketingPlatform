@@ -9,16 +9,17 @@
 </head>
 <body>
     <header class="cabecalho">
-
+      <div class="cabec-login">
+        <div class="login">
             <?php if(isset($_SESSION['SESSION_ANUNC_EMAIL'])){ ?>
-
             <label class="session-logado"><?php echo $_SESSION['SESSION_ANUNC_RAZAO']; ?></label>
-
             <?php } ?>
+        </div>    
 
-            <div class="icon-login">
-                <i class="fas fa-store-alt" id="icon-user"></i>
-            </div>
+        <div class="login">
+             <i class="fas fa-store-alt" id="icon-user"></i>
+        </div>
+      </div>
     </header>
     
     <input type="checkbox" id="chk">

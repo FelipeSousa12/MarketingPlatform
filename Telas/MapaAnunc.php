@@ -55,7 +55,6 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
                    <label>Endereço</label>
                 </div>
               
-
                 <div class="group-1">
                     <button name="botaoPes" id="botao" class="btnPesquisa">Pesquisar</button>
                 </div>
@@ -383,7 +382,16 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
                                  content: results[0].formatted_address
                                });
 
-                               infowindow.open(map,marcador);                      
+                               infowindow.open(map,marcador);     
+
+                                 var circulo = new google.maps.Circle({
+                                  map: map,
+                                  center: local,
+                                  radius: 50, // 1000 metros = 1k.
+                                  strokeColor: "#818c99",
+                                  fillColor: "#ffffff",
+                                  fillOpacity: 0.30
+                                });                 
                         }
 
                       }

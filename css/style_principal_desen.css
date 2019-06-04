@@ -8,11 +8,11 @@
 }
 
 .conteudo-container{
-	right: 0;
-	position: relative;
-	height: 100%;
-	width: 100%;
-	overflow: auto;
+  right: 0;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
   background: rgba(0,0,0,0.1);
 }
 
@@ -22,10 +22,11 @@
   display: block;
   text-align: center;
   background: white;
-  width: 95%;
-  height: 94%;
+  width: 97%;
+  height: 95%;
   margin: 0 auto;
-  transform: translate(8px,20px);
+  /*transform: translate(8px,20px);*/
+  top: 17px;
   position: relative;
 }
 
@@ -230,6 +231,26 @@ ul #a_caminho:hover{
       width: 83%;
     }
 }
+
+@media (min-width: 1460px){
+   .conteudo{
+      width: 84%;
+    }
+    .group-conteudo{
+      width: 97%;
+    }
+}
+
+@media (min-width: 1635px){
+   .conteudo{
+    width: 86%;
+   }
+
+   .conteudo-container{
+    width: 85%;
+   }
+}
+
 
 @media (max-width: 818px){
    .conteudo-container{

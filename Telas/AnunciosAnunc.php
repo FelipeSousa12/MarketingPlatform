@@ -36,50 +36,74 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
 
        <div class="conteudo-container">
 
-           <div class="upload">          
+         <div class="group-conteudo">
+
+           <div class="upload"> 
+
+              
+             <div class="upload-0">         
            
                <div class="group">
                     <div class="campo">
                         <input type="text" name="nome" class="control" autocomplete="off" required>
                         <label>Nome</label>
                     </div> 
-                     <div class="campo">
+                    <div class="campo">
                         <select class="control" id="selectTipo" required>
                           <option>---</option>
                           <option>Banner</option>
                           <option>Rodapé</option>
-                          <option>Interstial</option>
                         </select> 
                         <label>Tipo</label>
-                    </div>   
+                    </div> 
+                    <div class="campo">
+                      <h5>Direcionamento</h5>
+                    </div>
+                    <div class="campo">
+                        <div class="campo-acao">
+                           SITE<input type="radio" name="TipoAcao" class="control" autocomplete="off" required>
+                        </div>
+                        <div class="campo-acao">
+                           GPS<input type="radio" name="TipoAcao" class="control" autocomplete="off" required>
+                        </div>
+                    </div>  
+                     <div class="campo">
+                        <input type="text" name="link" class="control" autocomplete="off" required>
+                        <label>Link</label>
+                    </div>  
                </div>
 
                <div class="group">
-                 
-                  <div class="marcador">
-                      <img class="preview-img"/>
-                  </div>
-
-                  <div class="dados-img">
-                       <label for="imagem" id="btnUpload"><i class="fas fa-upload"></i>Upload Arquivo</label>
-                       <input type="file" name="foto" id="imagem">
+                  <div class="group-img">
+                      <div class="marcador">
+                          <img class="preview-img"/>
+                      </div>
                   </div>
                </div>
 
-                <div class="botoes">
+             </div>
 
-                    <div class="group-btn">
-                         <button class="botao" id="btnSalvarAnunc">Salvar Anúncio</button>
-                    </div>
+              <div class="upload-0">    
 
-                    <div class="group-btn">
-                         <button class="botao" id="btnPesquisarAnunc">Pesquisar</button>
-                    </div>
+                      <div class="group-botao">
+                         <label for="imagem" id="btnUpload"><i class="fas fa-upload"></i>Upload Arquivo</label>
+                         <input type="file" name="foto" id="imagem">
+                      </div>
 
-                </div>
+                      <div class="group-botao">
+                           <button class="botao" id="btnSalvarAnunc">Salvar Anúncio</button>
+                      </div>
+
+                      <div class="group-botao">
+                           <button class="botao" id="btnPesquisarAnunc">Pesquisar</button>
+                      </div>
+
+               </div>
+
 
           </div>
 
+        </div>
          
        </div>
         
@@ -131,7 +155,7 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
 
         $('#selectTipo').on('change',function(){
             if($(this).val() == 'Rodapé'){
-              $(".preview-img").replaceWith('<img class="preview-img" style="width:500px;height:90px;transition: .6s;">');
+              $(".preview-img").replaceWith('<img class="preview-img" style="width:400px;height:90px;transition: .6s;">');
             }else{
               if($(this).val() == 'Banner'){
                  $(".preview-img").replaceWith('<img class="preview-img">');
@@ -140,6 +164,7 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
         });
 
 
+        //UPLOAD DA IMAGEM NO QUADRO
           $('#imagem').on('change',function(e){
             file = e.target.files[0];
             
