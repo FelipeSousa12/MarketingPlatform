@@ -46,8 +46,6 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
                   <form action="../Relatorio/RelatorioAnunciantes.php" method="POST" target="_blank">
 
                     <select class="select-relatorio">
-                      <option value="01"><a href="../Relatorio/testeRela.php">Visualizações</a></option>
-                      <option value="02">Financeiro</option>
                       <option value="03">Geral</option>
                     </select>
 

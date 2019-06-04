@@ -220,12 +220,12 @@ body {
 }
 
 #img02 {
-      background-image: url("../Imagens/Visualizacao.png");
+      background-image: url("../Imagens/Tela2.png");
 }
 
 #img03 {
-      background-image: url("../Imagens/Desenvolvedor.png");
-      opacity: .7;
+      background-image: url("../Imagens/programador.png");
+      
 }
 
 .card-content {
