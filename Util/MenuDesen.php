@@ -9,17 +9,18 @@
 </head>
 <body>
     <header class="cabecalho">
+       <div class="cabec-login">
+        <div class="login">
 
             <?php if(isset($_SESSION['SESSION_DESENV_EMAIL'])){ ?>
-
             <label class="session-logado"><?php echo $_SESSION['SESSION_DESENV_DESENVOLVEDOR']; ?></label>
-
             <?php } ?>
 
-            <div class="icon-login">
+        </div>
+        <div class="login">
                <i class="fas fa-laptop-code" id="icon-user"></i>
-            </div>
-    
+        </div>
+       </div>
     </header>
     
     <input type="checkbox" id="chk">
@@ -49,13 +50,13 @@
         <ul id="ul-bottom">
       		<li id="li-bottom"><a class="select">-- Developer --</a></li>
       		<li id="li-bottom">
-            <a href="#" id="a-caminho">
+            <a href="../Telas/CadAplicativos.php" id="a-caminho">
               <i class="fas fa-mobile-alt icoApp" id="icon-menu" data-toggle="popover" data-placement="left" data-content="Aplicativos"></i>
               <label>Aplicativos</label>
             </a>
           </li>
           <li id="li-bottom">
-            <a href="#" id="a-caminho">
+            <a href="../Telas/DownloadApi.php" id="a-caminho">
               <i class="fas fa-file-code icoApi" id="icon-menu" data-toggle="popover" data-placement="left" data-content="API"></i>
               <label>API</label>
             </a>
