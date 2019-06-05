@@ -210,7 +210,7 @@ if(isset($_SESSION['SESSION_DESENV_EMAIL']) && isset($_SESSION['SESSION_DESENV_S
 
       $id = $_SESSION['SESSION_DESENV_ID'];
 
-      $sql = "SELECT * FROM termo_desenvolvedor WHERE Id_Desenvolvedor = '$id'";
+      $sql = "SELECT * FROM termo_desenvolvedor WHERE Id_Desen = '$id'";
 
       $query = $dao->executaSQL($sql);
 

@@ -13,7 +13,7 @@ class TermoDesenvolvedor extends baseBD {
             $this->campos_valores = array(
                 "STATUSTERMO" => NULL,
                 "DATATERMO" => NULL,
-                "ID_DESENVOLVEDOR" => NULL
+                "ID_DESEN" => NULL
             );
         } else {
             $this->campos_valores = $campos;

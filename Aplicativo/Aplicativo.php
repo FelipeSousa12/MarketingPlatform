@@ -9,20 +9,17 @@ class Aplicativo extends baseBD {
         $this->tabela = "APLICATIVO";
         if (sizeof($campos) <= 0) {
             $this->campos_valores = array(
-                "NOME" => NULL,
-                "IDENTIFICADOR" => NULL,
-                "CATEGORIA" => NULL,
-                "ID_DESENVOLVEDOR" => NULL
+                "NOMEAPP" => NULL,
+                "CATEGORIAAPP" => NULL,
+                "IDENTIFICADORAPP" => NULL,
+                "ID_DESEN" => NULL
             );
         } else {
             $this->campos_valores = $campos;
         }
-        $this->campopk="IDANUNCIO";
+        $this->campopk="IDAPP";
     }
 
 }
-
-
-?>
 
 ?>

@@ -17,7 +17,7 @@ if (isset($metodo["IdDesenvolvedor"])){
 
         $termo->setValor("STATUSTERMO", $status);
         $termo->setValor("DATATERMO", $dataAtual);
-        $termo->setValor("ID_DESENVOLVEDOR",$id_desen);
+        $termo->setValor("ID_DESEN",$id_desen);
 
      if($termo->inserir($termo)){
            echo json_encode(array('status' => true)); 
