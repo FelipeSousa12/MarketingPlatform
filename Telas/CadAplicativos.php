@@ -36,6 +36,9 @@ if(!isset($_SESSION['SESSION_DESENV_EMAIL']) && !isset($_SESSION['SESSION_DESENV
          <div class="conteudo-container">
          
              <div class="group-conteudo">
+                <div class="group-title">
+                    <h4><i class="fab fa-android"></i>Cadastro Aplicativos</h4>
+                </div>
                 
                 <div class="group-cadastro">
                     <div class="group-0">
@@ -52,20 +55,22 @@ if(!isset($_SESSION['SESSION_DESENV_EMAIL']) && !isset($_SESSION['SESSION_DESENV
                             <input type="text" name="nomeApp" class="campo" autocomplete="off" required>
                             <label>Nome App</label>
                         </div> 
-                         <div class="form">
+                        <div class="form">
                             <input type="text" name="nome" class="campo" autocomplete="off" required>
-                            <label>Nome</label>
-                        </div> 
-                         <div class="form">
+                            <label>Id</label>
+                        </div>
+                        <div class="form">
                             <select class="campo">
+                              <option>---</option>
                               <option>Esportes</option>
                               <option>Luta</option>
                               <option>Entreterimento</option>
                             </select>
                             <label>Categoria</label>
                         </div> 
-                        <div>
-                          <button class="botao">Cadastrar</button>
+                        <div class="form">
+                          <button class="botao" id="btnCadastrar">Cadastrar</button>
+                          <button class="botao" id="btnPesquisar"><i class="fas fa-search"></i></button>
                         </div>
                     
                     </div>
@@ -75,6 +80,66 @@ if(!isset($_SESSION['SESSION_DESENV_EMAIL']) && !isset($_SESSION['SESSION_DESENV
 
         </div>
     </section>
+<!----------------- MODAL FORM ------------------->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="border-radius: 20px;">
+      <div class="modal-body" style="text-align: center;border-radius: 20px;" id="quadro">
+        <span id="mensagem" style="font-weight: bold;"></span>
+      </div>
+    </div>
+  </div>
+</div>
+<!----------------- MODAL FORM ------------------->
+<!----------------- MODAL PESQUISA APP------------------->
+<div class="modal fade" id="ModalPesquisaApp" tabindex="-1" role="dialog"  aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="TituloModalCentralizado" style="font-weight: 800;color: #D56D05;">APLICATIVOS</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="body-info" style="height: 340px; width: 490px;">
+          <table class="table table-striped">
+            <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">NOME</th>
+                  <th scope="col">CATEGORIA</th>
+                  <th scope="col">AÇÃO</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <!--<button type="button" class="btn btn-primary" id="btnAceitarTermo">Aceitar Termo</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+<!----------------- FIM MODAL ------------------->    
 </body>
 <!-- -------- SCRIPTS ------- -->
 <script src="../js/jquery-3.3.1.min.js"></script>
@@ -83,4 +148,17 @@ if(!isset($_SESSION['SESSION_DESENV_EMAIL']) && !isset($_SESSION['SESSION_DESENV
 <script src="../bootstrap/js/bootstrap.bundle.js"></script>
 <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- -------- ------ ------- -->
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    $('#btnCadastrar').click(function(){
+
+    });
+
+    $('#btnPesquisar').click(function(){
+      $('#ModalPesquisaApp').modal('show');
+    });
+  });
+  
+</script>
 </html>

@@ -120,7 +120,7 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
   </div>
 </div>
 <!----------------- MODAL FORM ------------------->
-<!----------------- MODAL TERMOS DE USO ------------------->
+<!----------------- MODAL PESQUISA ANUNCIO ------------------->
 <div class="modal fade" id="ModalPesquisaAnuncios" tabindex="-1" role="dialog"  aria-labelledby="TituloModalCentralizado" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -139,7 +139,7 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
     </div>
   </div>
 </div>
-<!----------------- FIM MODAL INFORMAÇÕES ------------------->
+<!----------------- FIM MODAL ------------------->
 </body>
 <!-- -------- SCRIPTS ------- -->
 <script src="../js/jquery-3.3.1.min.js"></script>

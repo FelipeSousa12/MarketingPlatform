@@ -1,7 +1,4 @@
 /*--------- CORPO ---------*/
-body{
-  user-select: none;
-}
 .conteudo{
 	position: fixed;
 	height: 87%;
@@ -21,8 +18,8 @@ body{
 
 
 .group-conteudo{
-  padding: 0;
   overflow: auto;
+  padding: 0;
   display: block;
   text-align: center;
   background: white;
@@ -40,124 +37,20 @@ body{
 .group-conteudo::-webkit-scrollbar-corner { visibility: hidden;}
 .group-conteudo::-webkit-resizer { visibility: hidden; }
 
-.group-title{
-  border-bottom-right-radius: 100px;
-  border-bottom-left-radius: 100px;
-  height: 70px;
-}
-
-.group-title > h4{
-  justify-content: center;
-  margin: 0 auto;
-  position: relative;
-  padding-top: 30px;
-  margin-left: 40px;
-  color:  #D56D05;
-  float: left;
-}
-
-.group-title h4 i{
- color: black;
- margin-right: 15px;
-}
-
-.group-cadastro{
-  position: relative;
-  margin: 0 auto;
-  transform: translateY(50px);
-}
-
-.group-0{
- display: inline-block;
- width: 400px;
+.group-graficos-1{
  padding: 18px;
- transition: .5s;
+ margin: 15px;
+ float: left;
+ width: 460px;
+ height: 300px;
 }
 
-.group-0:nth-child(1){
-  border-bottom-right-radius: 2px solid #D56D05;
-  top: 0;
-}
-
-.group-0:nth-child(2){
-
-}
-
-.form{
-  position: relative;
-  margin: 0 auto;
-  padding-top: 18px;
-}
-
-.form select{
-  cursor: pointer;
-}
-
-.form label{
-   position: absolute;
-   top: 24px;
-   font-size: 18px;
-   pointer-events: none;
-   left: 0;
-   transition: all .4s;
-   color: #999;
-}
-
-.campo:focus ~ label,
-.campo:valid ~ label{
-  position: absolute;
-  top: -0px;
-  left: 0;
-  color: #D56D05;
-  font-size: 15px;
-  font-weight: bolder;
-}
-
-.campo:focus{
- outline: none;
- border-bottom-color: rgba(0,0,0,0.8);
-}
-
-.campo{
- display: block;
- width: 90%;
- padding: 3px;
- border-top: 0;
- border-left: 0;
- border-right: 0;
- border-bottom: 1px solid silver;
- border-radius: 0;
- transition: all 2s;
-}
-
-.icone-cel i{
-  font-size: 160px;
-  color: rgba(0,0,0,0.2);
-  margin: 0 auto;
-  transform: translateY(-20px);
-}
-
-.botao{
-    outline: none;
-    width: 30%;
-    padding-right: 10px;
-    position: relative;
-    font-weight: bold;
-    margin: 0 auto;
-    padding: 8px;
-    font-size: 14px;
-    color: #D56D05;
-    background: white;
-    cursor: pointer;
-    border-radius: 5px;
-    border: 1px solid #D56D05;
-    box-shadow: 3px 3px 3px rgba(0,0,0,.2);
-}
-
-.botao:active{
-  position:relative;
-  top:3px;
-  box-shadow:none;
+.group-graficos-2{
+ padding: 18px;
+ margin: 15px;
+ float: right;
+ width: 460px;
+ height: 300px;
 }
 
 /*-------- CAMINHO PAGINA --------- */

@@ -62,7 +62,7 @@
             </a>
           </li>
       		<li id="li-bottom">
-            <a href="#" id="a-caminho">
+            <a href="../Telas/GraficosDesen.php" id="a-caminho">
               <i class="fas fa-chart-bar icoGraf" id="icon-menu" data-toggle="popover" data-placement="left" data-content="Gráficos"></i>
               <label>Gráficos</label>
             </a>
