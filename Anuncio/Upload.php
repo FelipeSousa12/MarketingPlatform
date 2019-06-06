@@ -11,15 +11,19 @@ define('TAMANHO_MAXIMO', (2 * 1024 * 1024));
 if(isset($_FILES['file'])){
 
 	$ModeloAnuncio = $_POST['ModeloAnuncio'];
+  $nomeAnuncio = $_POST['Nome'];
+  $caminho = $_POST['Caminho'];
+  $tipoDirec = $_POST['TipoDirecionamento'];
 	$id = $_POST['id'];
 
+  //OPÇÕES DO ARQUIVO
 	$nome = $_FILES['file']['name'];
 	$tamanho = $_FILES['file']['size'];
 	$file = $_FILES['file']['tmp_name'];
-	$tipoAnuncio = $_FILES['file']['type'];
+	$tipoArquivo = $_FILES['file']['type'];
 
 
-if(!preg_match('/^image\/(pjpeg|jpeg|png|jpg|gif|bmp)$/', $tipoAnuncio)){
+if(!preg_match('/^image\/(pjpeg|jpeg|png|jpg|gif|bmp)$/', $tipoArquivo)){
 
     echo json_encode(array('status' => false, 'valor' => 'Não é uma Imagem Válida!'));
     exit;
@@ -38,14 +42,16 @@ if(!preg_match('/^image\/(pjpeg|jpeg|png|jpg|gif|bmp)$/', $tipoAnuncio)){
    	    $pdo = ConexaoPDO::conectar();
 
    		// Preparando comando
-		$stmt = $pdo->prepare('INSERT INTO Anuncio (NomeAnuncio,ModeloAnuncio,TipoAnuncio,Anuncio,Id_Anunc) VALUES (:nome,:modelo,:tipo,:anunc,:id)');
+		$stmt = $pdo->prepare('INSERT INTO Anuncio(NomeAnuncio,ModeloAnuncio,TipoArquivo,DirecAnuncio,CaminhoAnuncio,Anuncio,Id_Anunc) VALUES (?,?,?,?,?,?,?)');
 
 		// Definindo parâmetros
-		$stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
-		$stmt->bindParam(':modelo', $ModeloAnuncio, PDO::PARAM_STR);
-		$stmt->bindParam(':tipo', $tipoAnuncio, PDO::PARAM_STR);
-		$stmt->bindParam(':anunc', $bin, PDO::PARAM_LOB);
-		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+		$stmt->bindValue(1, $nomeAnuncio, PDO::PARAM_STR);
+		$stmt->bindValue(2, $ModeloAnuncio, PDO::PARAM_STR);
+    $stmt->bindValue(3, $tipoArquivo, PDO::PARAM_STR);
+		$stmt->bindValue(4, $tipoDirec, PDO::PARAM_STR);
+    $stmt->bindValue(5, $caminho, PDO::PARAM_STR);
+		$stmt->bindValue(6, $bin, PDO::PARAM_LOB);
+		$stmt->bindValue(7, $id, PDO::PARAM_INT);
 
    		if($stmt->execute()){
    			echo json_encode(array('status' => true, 'valor' => 'ANUNCIO ADICIONADO COM SUCESSO!!'));

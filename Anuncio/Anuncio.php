@@ -12,7 +12,8 @@ class Anuncio extends baseBD {
             $this->campos_valores = array(
                 "NOMEANUNCIO" => NULL,
                 "MODELOANUNCIO" => NULL,
-                "DIRECIONAMENTOANUNCIO" => NULL,
+                "TIPOARQUIVO" => NULL,
+                "DIRECANUNCIO" => NULL,
                 "CAMINHOANUNCIO" => NULL,
                 "ANUNCIO" => NULL,
                 "ID_ANUNC" => NULL

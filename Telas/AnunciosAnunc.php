@@ -49,26 +49,26 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
                         <label>Nome</label>
                     </div> 
                     <div class="campo">
-                        <select class="control" id="selectTipo" required>
-                          <option>---</option>
-                          <option>Banner</option>
-                          <option>Rodapé</option>
+                        <select class="control" id="selectModelo" required>
+                          <option value=""></option>
+                          <option value="Banner">Banner</option>
+                          <option value="Rodape">Rodapé</option>
                         </select> 
-                        <label>Tipo</label>
+                        <label>Modelo</label>
                     </div> 
                     <div class="campo">
                       <h5>Direcionamento</h5>
                     </div>
                     <div class="campo">
                         <div class="campo-acao">
-                           SITE<input type="radio" name="TipoAcao" value="SITE" id="radio" class="control" autocomplete="off" required>
+                           SITE<input type="radio" name="TipoDirec" value="SITE"  class="control" autocomplete="off" required checked>
                         </div>
                         <div class="campo-acao">
-                           GPS<input type="radio" name="TipoAcao" value="GPS" id="radio" class="control" autocomplete="off" required>
+                           GPS<input type="radio" name="TipoDirec" value="GPS"  class="control" autocomplete="off" required>
                         </div>
                     </div>  
                      <div class="campo">
-                        <input type="text" name="link" class="control" autocomplete="off" required>
+                        <input type="text" name="caminho" class="control" id="tipoCaminho" autocomplete="off" required>
                         <label>Link</label>
                     </div>  
                </div>
@@ -155,8 +155,8 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
 
       var id = '<?php echo $_SESSION['SESSION_ANUNC_ID']; ?>';
 
-        $('#selectTipo').on('change',function(){
-            if($(this).val() == 'Rodapé'){
+        $('#selectModelo').on('change',function(){
+            if($(this).val() == 'Rodape'){
               if($(window).width() > 1000){
                  $(".preview-img").replaceWith('<img class="preview-img" style="width:400px;height:90px;transition: .6s;margin-top:100px;">');
                  $('.group:nth-child(1)').css('width','25%');
@@ -211,71 +211,119 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
 
               var qtdImgSelecionadas = $('#imagem')[0].files.length;
               var formData = new FormData();
+
+ 
               
-              if(qtdImgSelecionadas <= 0){
-
-                 alert('Selecione uma imagem');
-
+              if($('#nomeAnuncio').val() == ''){
+                 $('#nomeAnuncio').focus();
+                 $('#nomeAnuncio').css('border-bottom','1px solid red');
               }else{
+                if($('#selectModelo').val() == ''){
+                  $('#selectModelo').css('border-bottom','1px solid red');
+                }else{
+                    if(!$('input[type="radio"]').is(':checked')){
+                      $('.campo:nth-child(4)').css('border-bottom','1px solid red');
+                    }else{
+                      if($('#tipoCaminho').val() == ''){
+                        $('#tipoCaminho').focus();
+                        $('#tipoCaminho').css('border-bottom','1px solid red');
+                      }else{
 
-                 formData.append('file', $('#imagem')[0].files[0]);
-                 formData.append('Nome', $('#nomeAnuncio').val());
-                 formData.append('ModeloAnuncio', $('#selectTipo').val());
-                 formData.append('id', id);
+                          if(qtdImgSelecionadas <= 0){
 
-                    $.ajax({
-                          url: '../Anuncio/Upload.php',
-                          method: 'POST',
-                          dataType: 'JSON',
-                          data: formData,
-                          processData: false,  
-                          contentType: false,
-                          success: function(response){
+                             alert('Selecione uma imagem');
 
-                            if(response.status){
+                          }else{
 
-                                $('#ModalAlert').modal('show');
-                                $('#mensagem').text(response.valor);
-                                $('#quadro').css('background','#D0F5A9'); 
+                             formData.append('file', $('#imagem')[0].files[0]);
+                             formData.append('Nome', $('#nomeAnuncio').val());
+                             formData.append('ModeloAnuncio', $('#selectModelo').val());
+                             formData.append('TipoDirecionamento',$('input[type="radio"]:checked').val());
+                             formData.append('Caminho', $('#tipoCaminho').val());
+                             formData.append('id', id);
 
-                                window.setTimeout(function(){
-                                    $('#ModalAlert').modal('hide');
-                                 },2100);
+                              $.ajax({
+                                      url: '../Anuncio/Upload.php',
+                                      method: 'POST',
+                                      dataType: 'JSON',
+                                      data: formData,
+                                      processData: false,  
+                                      contentType: false,
+                                      success: function(response){
 
-                                $('#selectTipo').val($("#selectTipo option:first").val());
-                                $(".preview-img").replaceWith('<img class="preview-img">');
+                                        if(response.status){
 
-                                $('#imagem').val('');
-                                console.log($('#imagem')[0].files.length);
+                                            $('#ModalAlert').modal('show');
+                                            $('#mensagem').text(response.valor);
+                                            $('#quadro').css('background','#D0F5A9'); 
 
-                            }else{
+                                            window.setTimeout(function(){
+                                                $('#ModalAlert').modal('hide');
+                                             },2100);
 
-                               $('#ModalAlert').modal('show');
-                               $('#mensagem').text(response.valor);
-                               $('#quadro').css('background','#FA5858'); 
+                                            $('#selectTipo').val($("#selectTipo option:first").val());
+                                            $(".preview-img").replaceWith('<img class="preview-img">');
 
-                               window.setTimeout(function(){
-                                    $('#ModalAlert').modal('hide');
-                               },2100);
+                                            $('#imagem,#nomeAnuncio,#tipoCaminho').val('');
+                                            $('#selectModelo').val( $('#selectModelo option:first-child').val());
+                                            $('input[value="SITE"]').attr('checked');
+                                            console.log($('#imagem')[0].files.length);
 
-                            }
-          
+                                        }else{
 
-                          },error: function(error){
+                                           $('#ModalAlert').modal('show');
+                                           $('#mensagem').text(response.valor);
+                                           $('#quadro').css('background','#FA5858'); 
 
+                                           window.setTimeout(function(){
+                                                $('#ModalAlert').modal('hide');
+                                           },2100);
+
+                                        }
+                      
+
+                                      },error: function(error){
+
+                                      }
+                                  });
+                             
                           }
-                      });
-                  
-              }
+                      }
 
+                    }
+                }
+              }
             });
+
+            //MUDANÇA DE NOME CAMPO CAMINHO
+             $('input[type="radio"]').click(function(e){
+                   if($(this)[0].checked){
+                     if($(this)[0].defaultValue == 'GPS'){
+                         $('.campo:nth-child(5) > label').html('Endereco');
+                     }else{
+                         $('.campo:nth-child(5) > label').html('Link');
+                     }
+                   }
+              });
 
 
             // ABIR ANUNCIOS
             $('#btnPesquisarAnunc').click(function(){
                $('#ModalPesquisaAnuncios').modal('show');
             });
-     
+
+            $('#nomeAnuncio,#tipoCaminho').keyup(function(e){
+              if($(this).val() != ''){
+                $(this).css('border-bottom','1px solid silver');
+              }
+            });
+
+            $('#selectModelo').change(function(e){
+              if($(this).val() != ''){
+                 $(this).css('border-bottom','1px solid silver');
+              }
+            });
+
     });
 </script>
 <script type="text/javascript">
