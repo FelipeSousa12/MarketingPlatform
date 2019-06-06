@@ -103,19 +103,20 @@ body{
 }
 
 .group{
-  display: inline-block;
+  display: block;
   margin-left: 40px;
   margin-right: 40px;
   position: relative;
 }
 
 .group:nth-child(1){
- width: 30%;
+ width: 40%;
  float: left;
+
 }
 
 .group:nth-child(2){
- float: right;
+  float: right;
 }
 
 #selectTipo{
@@ -196,7 +197,7 @@ body{
    transition: .5s;
 }
 
-.marcador{
+.preview-img{
   border: 1px solid rgba(0,0,0,0.1);
   padding: 10px;
   border-radius: 20px;
@@ -292,7 +293,7 @@ ul #a_caminho:hover{
    }
 }
 
-@media (max-width: 1038px){
+@media (max-width: 1080px){
    .upload-0{
     display: grid;
    }
@@ -304,6 +305,8 @@ ul #a_caminho:hover{
     float: none;
     width: 40%;
     margin: 0 auto;
+    margin-top: 0;
+    padding: 0;
   }
 
   .group:nth-child(2){
@@ -315,7 +318,7 @@ ul #a_caminho:hover{
    }
 
   .group-botao > button, .group-botao > #btnUpload{
-     width: 50%;
+     width: 40%;
      margin-bottom: 15px;
    }
 }

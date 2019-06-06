@@ -45,7 +45,7 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
            
                <div class="group">
                     <div class="campo">
-                        <input type="text" name="nome" class="control" autocomplete="off" required>
+                        <input type="text" name="nome" id="nomeAnuncio" class="control" autocomplete="off" required>
                         <label>Nome</label>
                     </div> 
                     <div class="campo">
@@ -61,10 +61,10 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
                     </div>
                     <div class="campo">
                         <div class="campo-acao">
-                           SITE<input type="radio" name="TipoAcao" class="control" autocomplete="off" required>
+                           SITE<input type="radio" name="TipoAcao" value="SITE" id="radio" class="control" autocomplete="off" required>
                         </div>
                         <div class="campo-acao">
-                           GPS<input type="radio" name="TipoAcao" class="control" autocomplete="off" required>
+                           GPS<input type="radio" name="TipoAcao" value="GPS" id="radio" class="control" autocomplete="off" required>
                         </div>
                     </div>  
                      <div class="campo">
@@ -151,14 +151,21 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
 <script type="text/javascript">
   $(document).ready(function(){
 
+    
+
       var id = '<?php echo $_SESSION['SESSION_ANUNC_ID']; ?>';
 
         $('#selectTipo').on('change',function(){
             if($(this).val() == 'Rodapé'){
-              $(".preview-img").replaceWith('<img class="preview-img" style="width:400px;height:90px;transition: .6s;">');
+              if($(window).width() > 1000){
+                 $(".preview-img").replaceWith('<img class="preview-img" style="width:400px;height:90px;transition: .6s;margin-top:100px;">');
+                 $('.group:nth-child(1)').css('width','25%');
+              }
+             
             }else{
               if($(this).val() == 'Banner'){
                  $(".preview-img").replaceWith('<img class="preview-img">');
+                    $('.group:nth-child(1)').css('width','40%');
               }
             }
         });
@@ -182,16 +189,16 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
                         alert('largura grande!');
                         console.log('Largura: ' + this.width);
                         console.log('Altura: ' + this.height);
-                        $('.marcador').css('border','1px solid red');
+                        //$('.marcador').css('border','1px solid red');
                       }else{
                         $('.preview-img').attr("src",reader.result);
-                        $('.marcador').css('border','1px solid #3CB371');
+                        //$('.marcador').css('border','1px solid #3CB371');
                       }
                     
                 }
               
-              imagem.src = reader.result;
-
+               imagem.src = reader.result;
+               e.target.files[0] = null;
               }
 
             reader.readAsDataURL(file);
@@ -212,6 +219,7 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
               }else{
 
                  formData.append('file', $('#imagem')[0].files[0]);
+                 formData.append('Nome', $('#nomeAnuncio').val());
                  formData.append('ModeloAnuncio', $('#selectTipo').val());
                  formData.append('id', id);
 
