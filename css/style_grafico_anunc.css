@@ -106,13 +106,10 @@ ul #a_caminho:hover{
     }
 }
 
-@media (min-width: 1460px){
+@media (max-height: 1080px){
    .conteudo{
-      width: 84%;
-    }
-    .group-conteudo{
-      width: 97%;
-    }
+     height: 89%;
+   }
 }
 
 @media (min-width: 1635px){

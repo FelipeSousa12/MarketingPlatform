@@ -11,12 +11,6 @@ body{
 	transition: .7s;
 }
 
-.group-conteudo::-webkit-scrollbar { width:5px; background: #00beaa;}
-.group-conteudo::-webkit-scrollbar-track { background: #4e4e4e; }
-.group-conteudo::-webkit-scrollbar-thumb { border-radius:17px; background: #D56D05;}
-.group-conteudo::-webkit-scrollbar-corner { visibility: hidden;}
-.group-conteudo::-webkit-resizer { visibility: hidden; }
-
 .conteudo-container{
   width: 100%;
   height: 100%;
@@ -39,6 +33,12 @@ body{
   top: 17px;
   position: relative;
 }
+
+.group-conteudo::-webkit-scrollbar { width:5px; background: #00beaa;}
+.group-conteudo::-webkit-scrollbar-track { background: #4e4e4e; }
+.group-conteudo::-webkit-scrollbar-thumb { border-radius:17px; background: #D56D05;}
+.group-conteudo::-webkit-scrollbar-corner { visibility: hidden;}
+.group-conteudo::-webkit-resizer { visibility: hidden; }
 
 .botao{
     outline: none;
@@ -229,6 +229,20 @@ body{
    font-size: 19px;
 }
 /* ------ FIM IMAGEM E UPLOAD ------- */
+/*------ MODAIS ------- */
+
+#body-info{
+  overflow: auto;
+}
+
+#body-info::-webkit-scrollbar { width:5px; background: #00beaa;}
+#body-info::-webkit-scrollbar-track { background: #4e4e4e; }
+#body-info::-webkit-scrollbar-thumb { border-radius:17px; background: #D56D05;}
+#body-info::-webkit-scrollbar-corner { visibility: hidden;}
+#body-info::-webkit-resizer { visibility: hidden; }
+
+
+/*------ FIM MODAL ------- */
 /*-------- CAMINHO PAGINA --------- */
 ul{
   list-style: none;
@@ -272,7 +286,6 @@ ul #a_caminho:hover{
 }
 
 /*--------- FIM CAMINHO ---------*/
-
 /*--------- FIM ---------*/
 
 /*****************--------RESPONSIVIDADE--------******************/
@@ -281,6 +294,12 @@ ul #a_caminho:hover{
     .conteudo{
       width: 83%;
     }
+}
+
+@media (max-height: 1080px){
+   .conteudo{
+     height: 89%;
+   }
 }
 
 @media (max-width: 818px){

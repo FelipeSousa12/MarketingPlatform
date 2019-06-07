@@ -36,13 +36,13 @@ if(!isset($_SESSION['SESSION_DESENV_EMAIL']) && !isset($_SESSION['SESSION_DESENV
          <div class="conteudo-container">
          
              <div class="group-conteudo">
-                
-                <div class="group-graficos-1">
-                   <canvas class="grafico-linha" height="7" width="10"></canvas>
+
+                <div class="group-title">
+                    <h4><i class="fas fa-chart-bar"></i>Monitoramento Gráficos</h4>
                 </div>
 
-                 <div class="group-graficos-2">
-                   <canvas class="grafico-bar" height="7" width="10"></canvas>
+                <div class="group-graficos">
+                  <canvas class="grafico-linha" height="7" width="8"></canvas>
                 </div>
 
             </div>
@@ -71,8 +71,8 @@ if(!isset($_SESSION['SESSION_DESENV_EMAIL']) && !isset($_SESSION['SESSION_DESENV
       labels: ["JAN","FEV","MAR","ABRIL","MAIO","JUN","JUL","AGO","SET","OUT","NOV","DEZ"],
 
     datasets:[{
-      label: "CLICKS",
-      data: [100,50,90,100,120,400,1000,1220,1400,1999,2000,3000],
+      label: "SALDO POR MÊS",
+      data: [100,50,90,100,120,400,1000,1220,1700,1999,2000,3000],
       borderWidth: 3,
       borderColor: 'Black',
       backgroundColor: 'transparent',

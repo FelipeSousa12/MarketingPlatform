@@ -44,6 +44,7 @@ body{
   border-bottom-right-radius: 100px;
   border-bottom-left-radius: 100px;
   height: 70px;
+  position: relative;
 }
 
 .group-title > h4{
@@ -64,7 +65,11 @@ body{
 .group-cadastro{
   position: relative;
   margin: 0 auto;
-  transform: translateY(50px);
+  border: 1px solid silver;
+  padding: 20px;
+  margin-top: 70px;
+  width: 90%;
+  border-radius: 40px;
 }
 
 .group-0{
@@ -222,13 +227,10 @@ ul #a_caminho:hover{
     }
 }
 
-@media (min-width: 1460px){
+@media (max-height: 1080px){
    .conteudo{
-      width: 84%;
-    }
-    .group-conteudo{
-      width: 97%;
-    }
+     height: 89%;
+   }
 }
 
 @media (min-width: 1635px){

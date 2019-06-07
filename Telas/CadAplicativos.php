@@ -62,9 +62,16 @@ if(!isset($_SESSION['SESSION_DESENV_EMAIL']) && !isset($_SESSION['SESSION_DESENV
                         <div class="form">
                             <select class="campo" id="selectCategoria">
                               <option value="">---</option>
+                              <option value="Compras">Compras</option>
                               <option value="Esportes">Esportes</option>
-                              <option value="Luta">Luta</option>
                               <option value="Entreterimento">Entreterimento</option>
+                              <option value="Musica">Música</option>
+                              <option value="Games">Games</option>
+                              <option value="Viagem">Viagens</option>
+                              <option value="Noticias">Noticias</option>
+                              <option value="Saude">Saúde</option>
+                              <option value="Utilidade">Utilidade</option>
+                              <option value="Redes Sociais">Redes Sociais</option>
                             </select>
                             <label>Categoria</label>
                         </div> 
@@ -93,7 +100,7 @@ if(!isset($_SESSION['SESSION_DESENV_EMAIL']) && !isset($_SESSION['SESSION_DESENV
 <!----------------- MODAL FORM ------------------->
 <!----------------- MODAL PESQUISA APP------------------->
 <div class="modal fade" id="ModalPesquisaApp" tabindex="-1" role="dialog"  aria-labelledby="TituloModalCentralizado" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document"  style="height: 340px; width: 700px;">
+  <div class="modal-dialog modal-dialog-centered" role="document"  style="height: 340px; width: 800px;">
     <div class="modal-content" >
       <div class="modal-header">
         <h5 class="modal-title" id="TituloModalCentralizado" style="font-weight: 800;color: #D56D05;">APLICATIVOS</h5>
@@ -102,14 +109,6 @@ if(!isset($_SESSION['SESSION_DESENV_EMAIL']) && !isset($_SESSION['SESSION_DESENV
         </button>
       </div>
       <div class="modal-body" id="body-info" style="height: 340px;">
-        <div class="blocoMenu">
-            <tr>
-              <th scope="col">IDENT.</th>
-              <th scope="col">NOME</th>
-              <th scope="col">CATEGORIA</th>
-              <th scope="col">AÇÃO</th>
-            </tr>
-        </div>
         <div class="bloco0" style="display: block;">
            <table class="table table-striped" >
              <thead>
@@ -175,6 +174,8 @@ if(!isset($_SESSION['SESSION_DESENV_EMAIL']) && !isset($_SESSION['SESSION_DESENV
 <script src="../js/jquery-3.3.1.min.js"></script>
 <script src="../bootstrap/js/bootstrap.min.js"></script>
 <script src="../bootstrap/js/bootstrap.js"></script>
+<script src="../bootstrap/js/bootstrap.bundle.js"></script>
+<script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- -------- ------ ------- -->
 <script type="text/javascript">
   $(document).ready(function(){

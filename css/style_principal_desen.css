@@ -36,14 +36,12 @@
 .conteudo-container::-webkit-scrollbar-corner { visibility: hidden;}
 .conteudo-container::-webkit-resizer { visibility: hidden; }
 
-/*.title-escolha{
-  background: #222;
-  border-bottom-left-radius: 320px;
-  border-bottom-right-radius: 320px;
-  height: 80px;
-  opacity: .5;
-  width: 100%;
+/*
+.title-escolha{
+  position: relative;
+  display: block;
 }
+
 
 .title-escolha h2{
    color: white;
@@ -56,14 +54,15 @@
 
 .group-dados{
  padding: 18px;
- margin: 15px;
- position: fixed;
- width: 93%;
- border: 1px solid rgba(0,0,0,0.2);
+ margin: 0 auto;
+ position: relative;
+ width: 90%;
+ border-bottom: 1px solid rgba(0,0,0,0.2);
 }
 
 .group-info{
-  transform: translateY(250px);
+   display: block;
+  position: relative;
 }
 
 /*----- TABELA DE DADOS ------*/
@@ -232,13 +231,10 @@ ul #a_caminho:hover{
     }
 }
 
-@media (min-width: 1460px){
+@media (max-height: 1080px){
    .conteudo{
-      width: 84%;
-    }
-    .group-conteudo{
-      width: 97%;
-    }
+     height: 89%;
+   }
 }
 
 @media (min-width: 1635px){

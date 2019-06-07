@@ -222,10 +222,16 @@ ul #a_caminho:hover{
 
 /*****************--------RESPONSIVIDADE--------******************/
 /*CODIGO QUANDO CHEGAR NA PROPORÇÃO DE PIXEL INFORMADA*/
-@media (min-width: 1370px) and (max-width: 1920px){
+@media (min-width: 1460px) and (max-width: 1920px){
     .conteudo{
       width: 83%;
     }
+}
+
+@media (max-height: 1080px){
+   .conteudo{
+     height: 89%;
+   }
 }
 
 @media (max-width: 818px){

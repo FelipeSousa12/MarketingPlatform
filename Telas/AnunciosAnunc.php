@@ -130,7 +130,7 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body" id="body-info" style="height: 340px; width: 490px;">
+      <div class="modal-body" id="body-info" style="height: 340px; width: 500px;">
         <div class="row"><!----RESULTADOS AQUII---></div>
       </div>
       <div class="modal-footer">

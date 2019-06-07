@@ -74,7 +74,7 @@
             </a>
           </li>
           <li id="li-bottom">
-            <a href="" id="a-caminho">
+            <a href="../Telas/ConfigAnunc.php" id="a-caminho">
               <i class="fas fa-cog icoConfig" id="icon-menu" data-toggle="popover" data-placement="left" data-content="Configuração"></i>
               <label>Configuração</label>
             </a>

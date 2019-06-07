@@ -1,10 +1,10 @@
 /*--------- CORPO ---------*/
 .conteudo{
-	position: fixed;
-	height: 87%;
-	right: 0;
-	width: 81%;
-	transition: .7s;
+  position: fixed;
+  height: 87%;
+  right: 0;
+  width: 81%;
+  transition: .7s;
 }
 
 .conteudo-container{
@@ -21,10 +21,11 @@
   display: block;
   text-align: center;
   background: white;
-  width: 95%;
-  height: 94%; 
+  width: 97%;
+  height: 95%;
   margin: 0 auto;
-  transform: translate(8px,20px);
+  /*transform: translate(8px,20px);*/
+  top: 17px;
   position: relative;
 }
 
@@ -115,16 +116,16 @@ ul #a_caminho:hover{
 
 /*****************--------RESPONSIVIDADE--------******************/
 /*CODIGO QUANDO CHEGAR NA PROPORÇÃO DE PIXEL INFORMADA*/
-@media (min-width: 1367px) and (max-width: 1920px){
-   .conteudo{
-    width: 90%;
-   }  
-}
-
 @media (min-width: 1370px) and (max-width: 1920px){
     .conteudo{
       width: 83%;
     }
+}
+
+@media (max-height: 1080px){
+   .conteudo{
+     height: 89%;
+   }
 }
 
 @media (max-width: 818px){

@@ -2,6 +2,52 @@
 body{
   user-select: none;
 }
+
+
+/*-------- CAMINHO PAGINA --------- */
+ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul #li_caminho{
+   display: inline-block;
+   padding: -10px;
+   margin: -10px;
+   margin-left: 25px;
+   margin-top: 8px;
+}
+
+ul #a_caminho{ /*TAG a (ANCORA)*/
+  font-size: 11px;
+  border: none;
+  margin: 0;
+  padding:0;
+  color: black;
+  text-decoration: none;
+  transition: all .2s;
+  text-transform: uppercase;
+}
+
+ul #a_caminho i{
+  font-size: 14px;
+}
+
+ul #a_caminho:hover{
+  color: #D56D05;
+}
+
+.caminho{
+    position: relative;
+    height: 40px;
+    border: none;
+    z-index: 5;
+    box-shadow: 3px 3px 3px rgba(0,0,0,.2);
+}
+
+/*--------- FIM CAMINHO ---------*/
+
 .conteudo{
 	position: fixed;
 	height: 87%;
@@ -40,13 +86,11 @@ body{
 .group-conteudo::-webkit-scrollbar-corner { visibility: hidden;}
 .group-conteudo::-webkit-resizer { visibility: hidden; }
 
-/*------ DOCUMENTAÇÃO API -----------  */
 .group-title{
   border-bottom-right-radius: 100px;
   border-bottom-left-radius: 100px;
   height: 70px;
   position: relative;
-  margin-bottom: 10px;
 }
 
 .group-title > h4{
@@ -64,51 +108,81 @@ body{
  margin-right: 15px;
 }
 
-.group-info{
-  margin: 0 auto;
+.group-cadastro{
   position: relative;
-  padding-top: 30px;
-  color:  #D56D05;
-  float: right;
-  margin-right: 20px;
+  margin: 0 auto;
+  border: 1px solid silver;
+  padding: 20px;
+  margin-top: 70px;
+  width: 90%;
+  border-radius: 40px;
 }
 
-.group-info > .info-0{
-   display: inline-block;
-   margin-right: 20px;
+.group-0{
+ display: inline-block;
+ width: 400px;
+ padding: 18px;
+ transition: .5s;
 }
 
-.group-info > .info-0:nth-child(1) > h4 > a{
+.group-0:nth-child(1){
+  border-bottom-right-radius: 2px solid #D56D05;
+  top: 0;
+}
+
+.form{
+  position: relative;
+  margin: 0 auto;
+  padding-top: 18px;
+}
+
+.form select{
+  cursor: pointer;
+}
+
+.form label{
+   position: absolute;
+   top: 24px;
+   font-size: 18px;
+   pointer-events: none;
+   left: 0;
+   transition: all .4s;
+   color: #999;
+}
+
+.campo:focus ~ label,
+.campo:valid ~ label{
+  position: absolute;
+  top: -0px;
+  left: 0;
   color: #D56D05;
+  font-size: 15px;
+  font-weight: bolder;
 }
 
-.group-info > .info-0:nth-child(2) > h5{
-  background: #D56D05;
-  color: white;
-  padding: 3px;
+.campo:focus{
+ outline: none;
+ border-bottom-color: rgba(0,0,0,0.8);
 }
 
-.group-document{
-  position: relative;
-  width: 96%;
-  height: 75%;
+.campo{
+ display: block;
+ width: 90%;
+ padding: 3px;
+ border-top: 0;
+ border-left: 0;
+ border-right: 0;
+ border-bottom: 1px solid silver;
+ border-radius: 0;
+ transition: all 2s;
+}
+
+.icone-cel i{
+  font-size: 160px;
+  color: rgba(0,0,0,0.2);
   margin: 0 auto;
-  overflow: auto;
-  border: 1px solid rgba(0,0,0,0.2);
+  transform: translateY(-20px);
 }
-
-.group-document #group-linha{
-  padding-top: 10px;
-}
-
-.group-opc{
-  position: relative;
-  padding: 9px;
-  top: 10px;
-  width: 96%;
-  margin: 0 auto;
-}
-
 
 .botao{
     outline: none;
@@ -133,87 +207,6 @@ body{
   box-shadow:none;
 }
 
-
-.group-document::-webkit-scrollbar { width:5px; background: #00beaa;}
-.group-document::-webkit-scrollbar-track { background: #4e4e4e; }
-.group-document::-webkit-scrollbar-thumb { border-radius:17px; background: #D56D05;}
-.group-document::-webkit-scrollbar-corner { visibility: hidden;}
-.group-document::-webkit-resizer { visibility: hidden; }
-
-.group-api{
-  display: block;
-  margin-bottom: 20px;
-  margin-left: 20px;
-}
-
-/*------ FIM DOCUMENTAÇÃO API -----------  */
-/*
-.api-0:nth-child(1){
-   width: 300px;
-   float: left;
-   margin-left: 10px;
-}
-
-.api-0:nth-child(2){
-   width: 700px;
-}
-
-.api-1:nth-child(1){
-   background: silver;
-   width: 300px;
-   float: left;
-   margin-left: 30px;
-}
-
-.api-1:nth-child(2){
-  background: silver;
-  width: 700px;
-}
-*/
-
-/*-------- CAMINHO PAGINA --------- */
-ul{
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-ul #li_caminho{
-   display: inline-block;
-   padding: -10px;
-   margin: -10px;
-   margin-left: 25px;
-   margin-top: 8px;
-}
-
-ul #a_caminho{ /*TAG a (ANCORA)*/
-	font-size: 11px;
-	border: none;
-	margin: 0;
-	padding:0;
-	color: black;
-	text-decoration: none;
-	transition: all .2s;
-	text-transform: uppercase;
-}
-
-ul #a_caminho i{
-	font-size: 14px;
-}
-
-ul #a_caminho:hover{
-	color: #D56D05;
-}
-
-.caminho{
-	  position: relative;
-    height: 40px;
-    border: none;
-    z-index: 5;
-    box-shadow: 3px 3px 3px rgba(0,0,0,.2);
-}
-
-/*--------- FIM CAMINHO ---------*/
 
 /*--------- FIM ---------*/
 
