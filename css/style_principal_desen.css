@@ -54,15 +54,14 @@
 
 .group-dados{
  padding: 18px;
- margin: 0 auto;
- position: relative;
- width: 90%;
+ margin: 15px;
+ position: fixed;
+ width: 76%;
  border-bottom: 1px solid rgba(0,0,0,0.2);
 }
 
 .group-info{
-   display: block;
-  position: relative;
+  transform: translateY(250px);
 }
 
 /*----- TABELA DE DADOS ------*/
@@ -110,6 +109,23 @@
   padding-left: 13px;
 }
 /*----- FIM ------*/
+/*----- ABAS ------*/
+.nav-abas #nav-tab{
+  color: #D56D05;
+  border-bottom: 1px solid rgba(0,0,0,0.3);
+  border-top: none;
+}
+
+.nav-abas #nav-tab a{
+  color: #D56D05;
+  font-weight: 800;
+  background: rgba(0,0,0,0.1);
+}
+
+.nav-abas #nav-tab a i{
+  margin-left: 9px;
+}
+/*----- FIM ABAS ------*/
 
 /*-------- CAMINHO PAGINA --------- */
 ul{

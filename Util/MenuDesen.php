@@ -68,7 +68,7 @@
             </a>
           </li>
       		<li id="li-bottom">
-            <a href="#" id="a-caminho">
+            <a href="../Telas/RelatorioDesen.php" id="a-caminho">
               <i class="fas fa-scroll icoRel" id="icon-menu" data-toggle="popover" data-placement="left" data-content="Relatórios"></i>
               <label>Relatórios</label>
             </a>

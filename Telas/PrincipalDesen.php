@@ -59,7 +59,45 @@ if(!isset($_SESSION['SESSION_DESENV_EMAIL']) && !isset($_SESSION['SESSION_DESENV
                         
                </div>
 
-               <div class="group-info"></div>
+               <div class="group-info">
+                 
+                <nav class="nav-abas">
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-visualizacoes" role="tab" aria-controls="nav-profile" aria-selected="false">Aplicativos Conectados</a>
+                    </div>
+                </nav>
+
+                <div class="tab-content" id="nav-tabContent">
+                  <div class="tab-pane fade show active" id="nav-visualizacoes" role="tabpanel" aria-labelledby="nav-home-tab">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th scope="col-2">ID APP</th>
+                            <th scope="col-2">APLICATIVO</th>
+                          </tr>
+                        </thead>
+                          <tbody>
+                            <tr>
+                              <th>...</th>
+                              <td>...</td>
+                            </tr>       
+                          </tbody>
+                           <tbody>
+                           
+                            <tr>
+                              <th>...</th>
+                              <td>...</td>
+                            </tr>
+                                
+                          </tbody>
+                      </table>
+                  </div>
+                  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    Pontos Visitados...
+                  </div>
+                </div>
+
+               </div>
 
            </div>
 

@@ -44,7 +44,6 @@
 .escolha-relatorio:nth-child(2){
  float: right;
  margin-right: 400px;
- width: 20%;
 }
 
 .escolha-relatorio select{
@@ -56,7 +55,7 @@
    color: #D56D05;
    font-weight: 200;
    cursor: pointer;
-   width: 100%;
+   width: 70%;
 }
 
 .escolha-relatorio p label{

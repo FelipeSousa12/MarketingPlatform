@@ -35,7 +35,8 @@ function headerTable(){
 }
 
 
-function VisuTabela(){
+function VisuTabela($id){
+
 	$db = new PDO('mysql:host=localhost;dbname=pmd','root','');
 	$this->SetFont('Times','',12);
 	$stmt = $db->query('select * from  pontospublicidade');
@@ -54,34 +55,36 @@ function VisuTabela(){
 	$this->Ln();
 	
 	$this->SetFont('Arial','B',14);
-	$this->Cell(276,5,utf8_decode('USUÁRIOS'),0,0,'C');
+	$this->Cell(276,5,utf8_decode('VISUALIZAÇÕES'),0,0,'C');
 	
 	$this->Ln();
-	$this->Cell(25,10,'ID',1,0,'L');
-	$this->Cell(90,10,utf8_decode('NOME'),1,0,'L');
-	$this->Cell(50,10,'CNPJ',1,0,'C');
-	$this->Cell(60,10,'TELEFONE',1,0,'L');
-	$this->Cell(50,10,'TELEFONE',1,0,'L');
+	$this->Cell(138,10,utf8_decode('ENDEREÇO'),1,0,'L');
+	$this->Cell(138,10,'QUANTIDADE DE PONTOS',1,0,'C');
 	$this->Ln();
 
 
+	$stmtUser = $db->prepare('SELECT Quantidade,Endereco FROM visualizacoes as V INNER JOIN pontospublicidade as P ON V.Id_Ponto = P.IdPontoPublicidade WHERE V.Id_Anunc = ?');
 
-	$stmtUser = $db->query('select * from  anunciante');
-	
-	while($data = $stmtUser-> fetch(PDO::FETCH_OBJ)){
+	$stmtUser->bindValue(1,$id);
+	$stmtUser->execute();
+
+if($stmtUser->rowCount() > 0){
+	while($data = $stmtUser->fetch(PDO::FETCH_OBJ)){
 		$this->SetFont('Times','B',12);
-		$this->Cell(25,10,$data->IdAnunciante,1,0,'L');
-		$this->Cell(90,10,$data->RazaoSocial,1,0,'L');
-		$this->Cell(50,10,$data->Cnpj,1,0,'L');
-		$this->Cell(60,10,$data->Telefone,1,0,'L');
-		$this->Cell(50,10,$data->Email,1,0,'L');
+		$this->Cell(138,10,$data->Endereco,1,0,'L');
+		$this->Cell(138,10,$data->Quantidade,1,0,'L');
 		$this->Ln();
 	}
-
-
-
-
+}else{
+		$this->SetFont('Times','B',12);
+		$this->Cell(138,10,'...',1,0,'L');
+		$this->Cell(138,10,'...',1,0,'L');
+		$this->Ln();
+}
 	
+	
+
+
 }
 
 }
