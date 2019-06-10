@@ -1,7 +1,4 @@
 /*--------- CORPO ---------*/
-body{
-  user-select: none;
-}
 .conteudo{
 	position: fixed;
 	height: 87%;
@@ -91,7 +88,7 @@ body{
 .group-document{
   position: relative;
   width: 96%;
-  height: 75%;
+  height: 73%;
   margin: 0 auto;
   overflow: auto;
   border: 1px solid rgba(0,0,0,0.2);

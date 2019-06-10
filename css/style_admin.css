@@ -1,0 +1,85 @@
+     body{
+           font-family: 'Abel', sans-serif;
+           overflow: auto;
+        }
+
+        .container{
+          position: relative;
+          height: 100%;
+        }
+         .container-admin{
+          border: 1px solid rgba(0,0,0,0.1);
+          border-radius: 20px;
+          position: relative;
+          margin: 0 auto;
+          height: 50%;
+          line-height: 100px;
+          transform: translateY(100px);
+          font-family: 'Abel', sans-serif;
+         }
+
+         .group{
+          display: inline-block;
+          border: 1px solid #D56D05;
+          padding: 30px;
+          margin-right: 20px;
+          border-radius: 10px;
+          cursor:pointer;
+          background: white;
+          color: #D56D05;
+          transition: .5s;
+         }
+         .group i{
+          font-size: 35px;
+         }
+
+         .group:hover{
+          transform: scale(1.06);
+         }
+
+         .group-acess{
+          position: relative;
+          width: 60%;
+          margin: 0 auto;
+          padding: 18px;
+         }
+
+         .group-title{
+          position: relative;
+          width: 100%;
+          margin: 0 auto;
+          padding: 5px;
+          background: #7c7c7c;
+          border-bottom-right-radius: 60px;
+          border-bottom-left-radius: 60px;
+          border-top-left-radius: 20px;
+          border-top-right-radius: 20px;
+         }
+
+         .group-title i{
+            font-size: 50px;
+            position: relative;
+            margin-right: 10px;
+            margin-left: 10px;
+         }
+
+         .group-title label{
+          color: white;
+          font-size: 20px;
+         }
+
+         body::-webkit-scrollbar { width:5px; background: #00beaa;}
+         body::-webkit-scrollbar-track { background: #4e4e4e; }
+         body::-webkit-scrollbar-thumb { border-radius:17px; background: #D56D05;}
+         body::-webkit-scrollbar-corner { visibility: hidden;}
+         body::-webkit-resizer { visibility: hidden; }
+         /*****************--------RESPONSIVIDADE--------******************/
+        /*CODIGO QUANDO CHEGAR NA PROPORÇÃO DE PIXEL INFORMADA*/
+        @media (max-width: 1200px){
+            .group{
+              display: block;
+              margin-bottom: 15px;
+            }
+        }
+
+        /*****************--------FIM RESPONSIVIDADE--------******************/

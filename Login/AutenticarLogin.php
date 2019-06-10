@@ -51,7 +51,19 @@ if(isset($requisicao['txtEmail']) && isset($requisicao['txtSenha'])){
 		
 		}else{
 
-			echo json_encode(array('status' => false));
+			$sqlAdmin = "SELECT * FROM ADMINISTRADOR WHERE Email = '$email' AND Senha = '$senha'";
+
+			$result_admin = $dao->executaSQL($sqlAdmin);
+
+			if(mysqli_num_rows($result_admin) > 0){
+
+				echo json_encode(array('status' => true,'tipoUser' => 'Administrador'));
+
+			}else{
+
+				echo json_encode(array('status' => false));
+
+			}
 
 		}	
 	}

@@ -48,19 +48,19 @@ ul #a_caminho:hover{
 /*--------- FIM CAMINHO ---------*/
 
 .conteudo{
-  position: fixed;
-  height: 87%;
-  right: 0;
-  width: 81%;
-  transition: .7s;
+	position: fixed;
+	height: 87%;
+	right: 0;
+	width: 81%;
+	transition: .7s;
 }
 
 .conteudo-container{
-  right: 0;
-  position: relative;
-  height: 100%;
+	right: 0;
+	position: relative;
+	height: 100%;
   width: 100%;
-  overflow: auto;
+	overflow: auto;
   background: rgba(0,0,0,0.1);
 }
 
@@ -136,6 +136,29 @@ ul #a_caminho:hover{
   width: 90%;
 }
 
+.radios{
+  position: relative;
+  top: 0;
+}
+
+.group-radio{
+  display: inline-block;  
+  margin-left: 2%;
+  margin-right: 10%;
+  margin-bottom: 15px;
+  position: relative;
+  top: 0;
+}
+
+.group-radio > input {
+   margin-left: 10px;
+   color: #D56D05;
+}
+
+input[type='radio']:hover{
+  cursor: pointer;
+}
+
 
 .form{
   position: relative;
@@ -144,6 +167,11 @@ ul #a_caminho:hover{
   margin-bottom: 10px;
 }
 
+#formulario > .form:nth-child(1){
+   border: 1px solid silver;
+   border-radius: 10px;
+   width: 90%;
+}
 
 .form select{
   cursor: pointer;

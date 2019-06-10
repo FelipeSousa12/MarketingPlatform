@@ -75,7 +75,7 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
                       $resultVerifica = $dao->executaSQL($sqlVerifica); $value = mysqli_fetch_object($resultVerifica);
                       if($value->Qtd > 0){ 
                     ?>
-                    <span class="QtdPontos" id="num-pontos" style=""><i class="fas fa-check" style="color: #008000;"></i></span>
+                    <span class="QtdPontos" id="num-pontos"><i class="fas fa-check" style="color: #008000;"></i></span>
 
                      <?php }else{ ?>
                     
@@ -84,13 +84,18 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
                    <?php }?>
                    <?php }else{ ?>
 
-                   <span class="QtdPontos" id="num-pontos">2</span>
-
-                   <?php }?>
+                    <?php $novaSql = "SELECT * FROM PONTOSPUBLICIDADE WHERE ID_ANUNC = '$id'"; $retorno = $dao->executaSQL($novaSql); 
+                    if(mysqli_num_rows($retorno) > 0){
+                    ?>
+                       <span class="QtdPontos" id="num-pontos"><i class="fas fa-check" style="color: #008000;"></i></span>    
+                    <?php }else{ ?>  
+                        <span class="QtdPontos" id="num-pontos">2</span>
+                   <?php } } ?>
                 </div>
 
               </div>
 
+                <!-- EXIBE O MAPA AQUI --->
                 <div id="map"></div>
 
             </div>
@@ -171,7 +176,9 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
       }
 
 
-      $('.btnSalvarPontos').on('click',function(){
+      $('.btnSalvarPontos').on('click',function(e){
+
+         console.log($('#num-pontos')[0].children.length);
           
           if($('#num-pontos').html() != 0){
 
@@ -242,8 +249,9 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
       map.addListener('click', function(e){
           //placeMarkerAndPanTo(e.latLng, map);
           //marcarPontoComEndereco(e.latLng,map);
-             if($('.QtdPontos').children().length != 0){
+            if($('#num-pontos')[0].children.length != 0){
                 alert('VOCE JA POSSUI PONTOS MARCADOS!!');
+                return false;
             }else{
 
                if($('.QtdPontos').html() != 0){
@@ -387,7 +395,7 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
                                  var circulo = new google.maps.Circle({
                                   map: map,
                                   center: local,
-                                  radius: 50, // 1000 metros = 1k.
+                                  radius: 100, // 1000 metros = 1k.
                                   strokeColor: "#818c99",
                                   fillColor: "#ffffff",
                                   fillOpacity: 0.30
@@ -498,4 +506,62 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
       });*/
 
     </script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+       if($('#num-pontos')[0].children.length != 0){
+          $('.btnSalvarPontos').prop('disabled',true);
+       }
+
+
+       $('.btnListar').click(function(){
+              $.ajax({
+                url: '../PontosPublicidade/PesquisarPontos.php',
+                method: 'POST',
+                dataType: 'JSON',
+                data: {Ident:id},
+                success: function(response){
+
+                  //BUSCANDO PONTOS DO BANCO E SETANDO NO MAPA
+                    for (i = 0; i < response.length; i++) {  
+
+                       latlng = new google.maps.LatLng(response[i].Latitude, response[i].Longitude);
+
+                       mapa.setZoom(16);
+
+                        var ponto = new google.maps.Marker({  
+                            map: mapa,
+                            position: latlng,
+                        });
+
+                        var infowindow = new google.maps.InfoWindow({
+                              content: response[i].Endereco
+                        });
+
+                         infowindow.open(mapa,ponto);     
+
+                        var circulo = new google.maps.Circle({
+                            map: mapa,
+                            center: latlng,
+                            radius: 100, // 1000 metros = 1k.
+                            strokeColor: "#818c99",
+                            fillColor: "#ffffff",
+                            fillOpacity: 0.30
+                          });     
+                    }
+
+
+                },error: function(e){
+                    $('#ModalNotificacao').modal('show');
+                    $('#mensagem').text('*ERROR DE ENVIO*: '+e.responseText+'/n *CODIGO*: '+e.status);
+                    $('#quadro').css('background','#FA5858'); 
+                }
+           });
+       });
+
+});
+
+
+</script>
 </html>

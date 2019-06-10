@@ -22,7 +22,8 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
      }else{
         $contratado = 'false';
      }
-    
+
+      
 }
 
 ?>
@@ -66,18 +67,41 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
                         <td id="titulo">Visualizações<i class="fas fa-eye"></i></td><td id="titulo">Pontos Visitados<i class="fas fa-map-marker-alt"></i></td>
                       </tr>
                       <tr>
-                            <td>
-                               <div class="dados-anunc">
+                          <td>
+                              <div class="dados-anunc">
+                              
+                              <?php 
+                              $query1 = "SELECT SUM(Quantidade) As Total FROM visualizacoes AS V WHERE V.Id_Anunc = $id";
+                              $resultado1 = $dao->executaSQL($query1);
+                              if(mysqli_num_rows($resultado1) > 0){ 
+
+                              $dado1 = mysqli_fetch_assoc($resultado1);
+                             
+                              if($dado1['Total'] == null){ ?>
                                   <h4>
-                                    <span class="num-Visualizacoes">0</span>     
+                                    <span class="num-Visualizacao">0</span>   
                                   </h4>
+                               <?php }else{ ?> 
+                                 <h4>
+                                    <span class="num-Visualizacao"><?php echo $dado1['Total']; ?></span>   
+                                  </h4>
+                               <?php }} ?>
                                </div>
                             </td>
                             <td>
                                 <div class="dados-anunc">
-                                  <h4>
-                                    <span class="num-pontos">0</span>
-                                  </h4>
+                                <?php 
+                                $query2 = "SELECT COUNT(Quantidade) As Quantidade FROM visualizacoes AS V WHERE V.Id_Anunc = $id";
+                                $resultado2 = $dao->executaSQL($query2);
+                                if(mysqli_num_rows($resultado2) > 0){ $dado2 = mysqli_fetch_assoc($resultado2); ?>
+                                    <h4>
+                                      <span class="num-pontos"><?php echo $dado2['Quantidade']; ?></span>   
+                                    </h4>
+                                 <?php }else{ ?>
+                                    <h4>
+                                      <span class="num-pontos">0</span>   
+                                    </h4>
+                                 <?php } ?>
                                 </div>
                             </td>
                       </tr>
@@ -89,15 +113,46 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
 
                 <nav class="nav-abas">
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="false">Visualizações</a>
-                      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Pontos Visitados<i class="fas fa-map-marker-alt" id="ptn"></i></a>
+                      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-visualizacoes" role="tab" aria-controls="nav-profile" aria-selected="false">Pontos Visitados<i class="fas fa-map-marker-alt" id="ptn"></i></a>
                     </div>
                 </nav>
 
                 <div class="tab-content" id="nav-tabContent">
-                  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">Visualizações...</div>
-                  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">Pontos Visitados...</div>
-                  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+                  <div class="tab-pane fade show active" id="nav-visualizacoes" role="tabpanel" aria-labelledby="nav-home-tab">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th scope="col-2">VISUALIZAÇÕES</th>
+                            <th scope="col-2">ENDERECO</th>
+                          </tr>
+                        </thead>
+                        <?php  $sql = "SELECT Quantidade,Endereco FROM visualizacoes as V INNER JOIN pontospublicidade as P ON V.Id_Ponto = P.IdPontoPublicidade WHERE V.Id_Anunc = $id"; $result = $dao->executaSQL($sql);  ?>
+                        <?php if(mysqli_num_rows($result) > 0){  
+                            while($dados = mysqli_fetch_object($result)){ ?>
+                          <tbody>
+                           
+                            <tr>
+                              <th><?php echo $dados->Quantidade; ?></th>
+                              <td><?php echo $dados->Endereco; ?></td>
+                            </tr>
+                                
+                          </tbody>
+                         <?php } ?> 
+                        <?php }else{ ?> 
+                           <tbody>
+                           
+                            <tr>
+                              <th>...</th>
+                              <td>...</td>
+                            </tr>
+                                
+                          </tbody>
+                        <?php } ?> 
+                      </table>
+                  </div>
+                  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    Pontos Visitados...
+                  </div>
                 </div>
 
                </div>

@@ -195,7 +195,14 @@ if(isset($_SESSION['SESSION_ANUNC_EMAIL']) && isset($_SESSION['SESSION_ANUNC_SEN
 
                              }else{
 
-                                  //SE O LOGIN FOR EFETUADO COM SUCESSO
+                              if(response.tipoUser == 'Administrador'){
+
+                                //CAMINHO PARA LOGAR ADMINISTRADOR
+                                window.location = '../Telas/AcessoAdministrador.php';
+
+                              }else{
+
+                                    //SE O LOGIN FOR EFETUADO COM SUCESSO
                                    $('#modalConfirm').modal('show');
                                    $('#mensagem').text('LOGADO!!');
                                    $('.modal-body').css('background','#D0F5A9'); 
@@ -209,6 +216,8 @@ if(isset($_SESSION['SESSION_ANUNC_EMAIL']) && isset($_SESSION['SESSION_ANUNC_SEN
 
                                   //CAMINHO PARA DESENVOLVEDOR LOGAR NA CONTA COM SUCESSO
                                   window.location = '../Telas/PrincipalDesen.php';
+
+                              }
 
                              } 
                              

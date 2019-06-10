@@ -324,6 +324,8 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
               }
             });
 
+
+     
     });
 </script>
 <script type="text/javascript">
@@ -357,9 +359,17 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
                   response.forEach(function(element){
 
                     var div = document.createElement('div');
+                    var divExcluir = document.createElement('div');
+                    var button = '<button style="margin-top:10px;color:#D56D05;background:white;border:1px solid #D56D05;padding:5px;cursor:pointer;border-radius:10px;" class="btnExcluirAnuncio">Excluir</button>'
+                    var hidden = '<input type="hidden" value="'+element.Id+'">';
+
+                    $(divExcluir).attr('class','col');
+                    $(divExcluir).append(button);
+                    $(divExcluir).append(hidden);
 
                     $(div).attr('class','col');
                     $(div).html(element.Anuncio);
+                    $(div).append(divExcluir);
 
                     $('.modal-body .row').append(div);
 
@@ -371,6 +381,8 @@ if(!isset($_SESSION['SESSION_ANUNC_EMAIL']) && !isset($_SESSION['SESSION_ANUNC_S
             });
         
       });
+
+  
   
 </script>
 </html>

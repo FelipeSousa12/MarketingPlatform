@@ -11,7 +11,7 @@ $arrayDados = array();
 
 $pdo = ConexaoPDO::conectar();
 // Preparando comando
-$stmt = $pdo->prepare('SELECT NOMEANUNCIO,TIPOARQUIVO,ANUNCIO FROM ANUNCIO WHERE ID_ANUNC = ?');
+$stmt = $pdo->prepare('SELECT IDANUNCIO,NOMEANUNCIO,TIPOARQUIVO,ANUNCIO FROM ANUNCIO WHERE ID_ANUNC = ?');
 
 $stmt->bindValue(1,$id);
 
@@ -23,7 +23,8 @@ if($stmt->rowCount() > 0){
 
    foreach ($dados as $valor) {
    	  array_push($arrayDados, array(
-        'Nome' => $valor->NOMEANUNCIO, 
+        'Nome' => $valor->NOMEANUNCIO,
+        'Id' => $valor->IDANUNCIO, 
         'Anuncio' => '<img src="data:'.$valor->TIPOARQUIVO.';base64(data:'.$valor->TIPOARQUIVO.';base64,'.base64_encode($valor->ANUNCIO) .'" style="width: 100px; heigth: 120px;"/>')
         );
    }
